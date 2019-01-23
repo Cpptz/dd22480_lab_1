@@ -42,6 +42,10 @@ public class LIC {
             // store the two previous ones
             distance_1 = distance_2;
             distance_2 = distance_3;
+
+
+
+
         }
         return false;
     }
