@@ -11,5 +11,8 @@ public class Calculator {
 
     // calc area
 
+    // quadrant
+
+    // distance
 
 }
