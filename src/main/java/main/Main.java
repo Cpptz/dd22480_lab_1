@@ -1,18 +1,9 @@
 package main;
 
-import java.lang.reflect.Array;
-
 public class Main {
 
-
-
-    static int NUM_POINTS ;
-
-
-
-    public static int some_function(){
-        return 5;
-    }
+    static int[] PUV = new int[15];
+    static boolean[] FUV = new boolean[15];
 
     public static void main(String[] args) {
 
