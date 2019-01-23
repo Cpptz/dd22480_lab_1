@@ -5,7 +5,14 @@ package main;
 
 public class Calculator {
 
-    // calc radius
+    /**
+     *
+     * @param a
+     * @return distance with the origin
+     */
+    public static double computeRadius(Point a){
+        return computeDistance(new Point(0,0), a);
+    }
 
     // calc angle
 
@@ -14,5 +21,8 @@ public class Calculator {
     // quadrant
 
     // distance
+    public static double computeDistance(Point a, Point b){
+        return Math.sqrt(Math.pow((a.x-b.x),2)+Math.pow(a.y-b.y,2));
+    }
 
 }
