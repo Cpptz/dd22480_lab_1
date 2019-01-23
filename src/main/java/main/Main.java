@@ -2,9 +2,8 @@ package main;
 
 public class Main {
 
-    public static int some_function(){
-        return 5;
-    }
+    static int[] PUV = new int[15];
+    static boolean[] FUV = new boolean[15];
 
     public static void main(String[] args) {
 
