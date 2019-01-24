@@ -50,5 +50,13 @@ public class LIC {
         return false;
     }
 
+    public static boolean LIC_7(Point[] points, int numPoints) {
+        if (numPoints < 3) return false;
+        for(int i = 0; i < numPoints-K_PTS-1; i++){
+            if(Calculator.computeDistance(points[i], points[i + K_PTS + 1]) > LENGTH1) return true;
+        }
+        return false;
+    }
+
 
 }
