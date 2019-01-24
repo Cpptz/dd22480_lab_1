@@ -18,7 +18,7 @@ public class Calculator {
 
     // calc area
     public static double computeArea(Point a, Point b, Point c) {
-        return ((a.x * (b.y - c.y) + b.x * (c.y - a.y) + c.x * (a.y - b.y)) / 2);
+        return Math.abs((a.x * (b.y - c.y) + b.x * (c.y - a.y) + c.x * (a.y - b.y)) / 2);
         // quadrant
     }
     // distance
