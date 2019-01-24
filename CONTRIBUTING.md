@@ -5,7 +5,7 @@
 2. Select on task, convert it to issue, and move it to *In progress* card
 3. Develop the functionnalities and associated unit tests
 4. Push it to a branch named **iss_42** for the issue 42 for example
-5. When you think, your task is completely done and pushed on the remote branch, move your task to *Need to be checked* card and make a PR on master branch
+5. When you think, your task is completely done and pushed on the remote branch, move your task to *Need to be checked* card and make a PR on master branch. Your PR comment should include a message to automatically close the issue (when the PR will be merged in master) such as *Resolve #42*
 
 ## Code review
 1. Select a PR, corresponding to a *Need to be checked* task
