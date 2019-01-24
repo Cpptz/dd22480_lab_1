@@ -38,5 +38,9 @@ class LICTest {
         Point[] newpoints = {a,b,c,d,e,f,g};
 
         assertEquals(LIC.LIC_3(newpoints,7),true);
+
+        LIC.AREA1 = -1;
+
+        assertEquals(LIC.LIC_3(newpoints,7),false);
     }
 }
