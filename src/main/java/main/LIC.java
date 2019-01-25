@@ -23,6 +23,9 @@ public class LIC {
 
     public static boolean LIC_0(Point[] points, int numPoints) {
 
+        // make sure input is correct
+        if (LENGTH1 < 0) return false;
+
         // base case
         if (numPoints < 2) return false;
 
@@ -34,6 +37,9 @@ public class LIC {
     }
 
     public static boolean LIC_1(Point[] points, int numPoints) {
+        // make sure input is correct
+        if (RADIUS1 < 0) return false;
+
         // base case
         if (numPoints < 3) return false;
 

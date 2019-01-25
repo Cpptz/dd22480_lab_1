@@ -23,6 +23,10 @@ class LICTest {
 
         assertEquals(LIC.LIC_0(new Point[]{a,c} ,2),false);
 
+        // wrong input
+        LIC.LENGTH1 = -1;
+        assertEquals(LIC.LIC_0(points,3),false);
+
     }
 
 
@@ -45,6 +49,10 @@ class LICTest {
 
         Point[] points_2 = {a,d,e};
         assertEquals(LIC.LIC_1(points_2,3),false);
+
+
+        LIC.RADIUS1 =-1;
+        assertEquals(LIC.LIC_1(points,3),false);
 
     }
 }
