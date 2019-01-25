@@ -38,7 +38,7 @@ class LICTest {
         LIC.G_PTS = 0;
         assertFalse(LIC.LIC_11(points,6));
 
-        // this should fail since K_PTS is more than numPoints - 2
+        // this should fail since G_PTS is more than numPoints - 2
         LIC.G_PTS = 5;
         assertFalse(LIC.LIC_11(points,6));
     }
