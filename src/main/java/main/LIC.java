@@ -50,5 +50,11 @@ public class LIC {
         return false;
     }
 
-
+    public static boolean LIC_11(Point[] points, int numPoints) {
+        if (numPoints < 3 || G_PTS < 1 || G_PTS > numPoints - 2)  return false;
+        for (int i = 0; i < numPoints - G_PTS - 1; i++) {
+            if (points[i+G_PTS+1].x - points[i].x < 0) return true;
+        }
+        return false;
+    }
 }
