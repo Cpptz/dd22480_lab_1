@@ -22,4 +22,10 @@ class CalculatorTest {
         Point a = new Point(2,2);
         assertEquals(Calculator.computeRadius(a), Math.sqrt(8));
     }
+
+    @Test
+    void computeMaxRadiusTriInCircle() {
+        
+        assertEquals(Calculator.computeMaxRadiusTriInCircle(20,15,25), 12,50);
+    }
 }
