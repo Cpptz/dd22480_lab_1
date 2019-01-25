@@ -22,6 +22,13 @@ public class LIC {
     static double AREA2;
 
     public static boolean LIC_0(Point[] points, int numPoints) {
+
+        // make sure input is correct
+        if (LENGTH1 < 0) return false;
+
+        // base case
+        if (numPoints < 2) return false;
+
         for (int i = 0; i < numPoints - 1; i++) {
             double distance = Calculator.computeDistance(points[i], points[i + 1]);
             if (distance > LENGTH1) return true;
@@ -30,7 +37,14 @@ public class LIC {
     }
 
     public static boolean LIC_1(Point[] points, int numPoints) {
-        // compte radius for the first two points
+        // make sure input is correct
+        if (RADIUS1 < 0) return false;
+
+        // base case
+        if (numPoints < 3) return false;
+
+
+        // compute radius for the first two points
         double distance_1 = Calculator.computeRadius(points[0]);
         double distance_2 = Calculator.computeRadius(points[1]);
         for (int i = 2; i < numPoints; i++) {
@@ -42,9 +56,6 @@ public class LIC {
             // store the two previous ones
             distance_1 = distance_2;
             distance_2 = distance_3;
-
-
-
 
         }
         return false;
