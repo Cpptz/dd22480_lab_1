@@ -32,12 +32,7 @@ public class Main {
 
     }
 
-
-
-
     public static void main(String[] args) {
-        Point[] points = {new Point(3,3), new Point(6,3),new Point(6,6),
-                new Point(9,3),new Point(9,4),new Point(13,1),new Point(13,4)};
-        LIC.LIC_8(points, points.length);
+
     }
 }
