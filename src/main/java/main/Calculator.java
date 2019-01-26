@@ -17,9 +17,10 @@ public class Calculator {
     // calc angle
 
     // calc area
-
-    // quadrant
-
+    public static double computeArea(Point a, Point b, Point c) {
+        return Math.abs((a.x * (b.y - c.y) + b.x * (c.y - a.y) + c.x * (a.y - b.y)) / 2);
+        // quadrant
+    }
     // distance
     public static double computeDistance(Point a, Point b){
         return Math.sqrt(Math.pow((a.x-b.x),2)+Math.pow(a.y-b.y,2));
