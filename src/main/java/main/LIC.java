@@ -60,14 +60,32 @@ public class LIC {
         return false;
     }
 
-    static boolean LIC_6(Point[] points) {
-        if(points.length < 3) {
+
+
+    public static boolean LIC_3(Point[] points, int numPoints) {
+        if (AREA1 <= 0) { return false; }
+        for (int i = 0; i < numPoints - 2; i++) {
+            double triangleArea = Calculator.computeArea(points[i], points[i + 1], points[i + 2]);
+            if (triangleArea > AREA1) return true;
+        }
+        return false;
+    }
+
+    public static boolean LIC_5(Point[] points, int numPoints) {
+        for (int i = 0; i < numPoints - 1; i++) {
+            if (points[i+1].x - points[i].x < 0) return true;
+        }
+        return false;
+    }
+
+    static boolean LIC_6(Point[] points, int numPoints) {
+        if(numPoints < 3 || N_PTS < 3 || DIST < 0) {
             return false;
         }
         int first = 0;
         int last = N_PTS-1;
 
-        while(last < points.length) {
+        while(last < numPoints) {
             Line line = new Line(points[first], points[last]);
             for (int i = first + 1; i < last; i++) {
                 double dist;
@@ -89,22 +107,6 @@ public class LIC {
         return false;
     }
 
-
-    public static boolean LIC_3(Point[] points, int numPoints) {
-        if (AREA1 <= 0) { return false; }
-        for (int i = 0; i < numPoints - 2; i++) {
-            double triangleArea = Calculator.computeArea(points[i], points[i + 1], points[i + 2]);
-            if (triangleArea > AREA1) return true;
-        }
-        return false;
-    }
-
-    public static boolean LIC_5(Point[] points, int numPoints) {
-        for (int i = 0; i < numPoints - 1; i++) {
-            if (points[i+1].x - points[i].x < 0) return true;
-        }
-        return false;
-    }
 
     public static boolean LIC_7(Point[] points, int numPoints) {
 
