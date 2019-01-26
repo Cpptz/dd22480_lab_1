@@ -2,7 +2,7 @@ package main;
 
 public class LIC {
     static double LENGTH1;
-    static double RADIUS1;
+    static double RADIUS1 = 15;
     static double EPSILON;
     static double AREA1;
     static int Q_PTS;
@@ -10,8 +10,8 @@ public class LIC {
     static double DIST;
     static int N_PTS;
     static int K_PTS;
-    static int A_PTS;
-    static int B_PTS;
+    static int A_PTS = 1;
+    static int B_PTS = 1;
     static int C_PTS;
     static int D_PTS;
     static int E_PTS;
@@ -95,5 +95,26 @@ public class LIC {
         return false;
     }
 
+    static boolean LIC_8(Point[] points, int numPoints) {
+        // base case
+        if(numPoints < 5 || (A_PTS + B_PTS) > (numPoints - 3) || A_PTS < 1 || B_PTS < 1){
+            return false;
+        }
+        int first = 0;
+        int middle = first + A_PTS + 1;
+        int last = middle + B_PTS + 1;
 
+        while(last < numPoints) {
+            double dist1 = Calculator.computeRadius(points[first]);
+            double dist2 = Calculator.computeRadius(points[middle]);
+            double dist3 = Calculator.computeRadius(points[last]);
+            if (dist1 > RADIUS1 || dist2 > RADIUS1 || dist3 > RADIUS1) {
+                return true;
+            }
+            ++first;
+            ++middle;
+            ++last;
+        }
+        return false;
+    }
 }
