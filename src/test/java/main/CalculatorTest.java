@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorTest {
+
+    private static final double DELTA = 1e-14;
   
     @Test
     void distToLine(){
@@ -13,7 +15,7 @@ class CalculatorTest {
 
         double dist = 1;
 
-        assert((dist - Calculator.distToLine(line, p)) < 0.1 && (dist - Calculator.distToLine(line, p)) > - 0.1 );
+        assertEquals(Calculator.distToLine(line, p), 3*Math.sqrt(10)/10,DELTA);
     }
 
     @Test
