@@ -26,4 +26,9 @@ public class Calculator {
         return Math.sqrt(Math.pow((a.x-b.x),2)+Math.pow(a.y-b.y,2));
     }
 
+    // Calculate the radius needed of a circle to envelop a triangle. (Use for lic#8)
+    public static double computeRadiusTriInCircle(double side_a, double side_b, double side_c){
+        return ((side_a*side_b*side_c)/(Math.sqrt((side_a + side_b + side_c)*(side_b + side_c - side_a)*(side_c + side_a - side_b)*(side_a + side_b - side_c))));
+    }
+
 }
