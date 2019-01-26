@@ -32,24 +32,34 @@ class LICTest {
 
     @Test
     void LIC_1() {
-        LIC.RADIUS1 =2;
+        LIC.RADIUS1 =1;
 
 
-        Point a = new Point(0,1);
-        Point b = new Point(0,-1);
-        Point c = new Point(0,2);
-        Point d = new Point(2,2);
+        Point a = new Point(1,1);
+        Point b = new Point(0,0);
+        Point c = new Point(2,0);
+        Point d = new Point(0.5,0.5);
         Point e = new Point(-2,2);
+        Point f = new Point(0.75,0.75);
 
         // base case
         assertEquals(LIC.LIC_1(new Point[]{a},1),false);
 
+        // circle cented on (1,0)
         Point[] points = {a,b,c};
-        assertEquals(LIC.LIC_1(points,3),true);
+        assertEquals(LIC.LIC_1(points,3),false);
 
+        // larger
         Point[] points_2 = {a,d,e};
-        assertEquals(LIC.LIC_1(points_2,3),false);
+        assertEquals(LIC.LIC_1(points_2,3),true);
 
+        // same line large
+        Point[] points_3 = {a,b,d};
+        assertEquals(LIC.LIC_1(points_3,3),true);
+
+        // same line small
+        Point[] points_4 = {a,d,f};
+        assertEquals(LIC.LIC_1(points_4,3),false);
 
         LIC.RADIUS1 =-1;
         assertEquals(LIC.LIC_1(points,3),false);
