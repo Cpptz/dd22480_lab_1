@@ -1,6 +1,9 @@
 package main;
 
 public class LIC {
+    private static final double DELTA = 1e-15;
+
+
     static double LENGTH1;
     static double RADIUS1;
     static double EPSILON;
@@ -104,10 +107,13 @@ public class LIC {
         boolean isGreaterThanAREA1 = false;
         boolean isLessThanAREA2 = false;
         for(int i = 0; i < numPoints-E_PTS - F_PTS-2; i++){
-            if(Calculator.computeArea(points[i], points[i + E_PTS + 1], points[i + E_PTS + F_PTS + 2]) > AREA1){
+            double area = Calculator.computeArea(points[i], points[i + E_PTS + 1], points[i + E_PTS + F_PTS + 2]);
+            if(area > AREA1 && Math.abs((area- AREA1))> DELTA)
+            {
                 isGreaterThanAREA1 = true;
             }
-            if(Calculator.computeArea(points[i], points[i + E_PTS + 1], points[i + E_PTS + F_PTS + 2]) < AREA2){
+            if(area < AREA2 && Math.abs((area- AREA1))> DELTA)
+            {
                 isLessThanAREA2 = true;
             }
             if(isGreaterThanAREA1 && isLessThanAREA2) return true;
