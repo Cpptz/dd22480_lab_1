@@ -42,11 +42,37 @@ public class LIC {
             // store the two previous ones
             distance_1 = distance_2;
             distance_2 = distance_3;
-
-
-
-
         }
+        return false;
+    }
+
+    static boolean LIC_6(Point[] points) {
+        if(points.length < 3) {
+            return false;
+        }
+        int first = 0;
+        int last = N_PTS-1;
+
+        while(last < points.length) {
+            Line line = new Line(points[first], points[last]);
+            for (int i = first + 1; i < last; i++) {
+                double dist;
+                if (Calculator.areIdentical(points[first], points[last])) {
+                    dist = Calculator.computeDistance(points[first], points[i]);
+
+                } else {
+                    dist = Calculator.distToLine(line, points[i]);
+                    System.out.println(dist);
+
+                }
+                if (dist > DIST) {
+                    return true;
+                }
+            }
+            ++first;
+            ++last;
+        }
+        System.out.print("false");
         return false;
     }
 
