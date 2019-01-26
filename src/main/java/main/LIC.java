@@ -7,11 +7,11 @@ public class LIC {
     static double AREA1;
     static int Q_PTS;
     static int QUADS;
-    static double DIST = 10;
+    static double DIST;
     static int N_PTS;
     static int K_PTS;
-    static int A_PTS = 2;
-    static int B_PTS = 2;
+    static int A_PTS;
+    static int B_PTS;
     static int C_PTS;
     static int D_PTS;
     static int E_PTS;
