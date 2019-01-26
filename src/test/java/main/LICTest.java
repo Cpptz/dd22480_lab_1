@@ -156,4 +156,52 @@ class LICTest {
         LIC.G_PTS = 5;
         assertFalse(LIC.LIC_11(points,6));
     }
+
+    @Test
+    void LIC_14(){
+
+
+        LIC.AREA1 = 1;
+        LIC.AREA2 = 4;
+        LIC.E_PTS = 2;
+        LIC.F_PTS = 1;
+
+        Point a = new Point(0,0);
+        Point b = new Point(20,0);
+        Point c = new Point(0,3);
+        Point d = new Point(0,1.5);
+        Point e = new Point(0.25,0);
+        Point f = new Point(2, 0);
+
+        Point[] points = {a,b,c,d,e,f};
+
+        assertTrue(LIC.LIC_14(points,6));
+
+        // numPoints too small
+        assertFalse(LIC.LIC_14(points, 5));
+
+        // area too small
+        LIC.AREA1 = 2;
+        assertFalse(LIC.LIC_14(points, 6));
+
+        // area too large
+        LIC.AREA1 = 1;
+        LIC.AREA2 = 1.25;
+        assertFalse(LIC.LIC_14(points, 6));
+
+        //not the same set of points which pass conditions
+        LIC.AREA1 = 8;
+        LIC.AREA2 = 1.25;
+        LIC.E_PTS = 1;
+        assertTrue(LIC.LIC_14(points, 6));
+
+
+
+
+
+
+
+
+
+    }
 }

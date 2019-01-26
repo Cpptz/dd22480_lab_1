@@ -96,4 +96,28 @@ public class LIC {
     }
 
 
+    public static boolean LIC_14(Point[] points, int numPoints){
+        if(AREA1 < 0 || AREA2 <0 || E_PTS <1 || F_PTS < 1 || numPoints < 5 || E_PTS + F_PTS > numPoints - 3){
+            return  false;
+        }
+
+        boolean isGreaterThanAREA1 = false;
+        boolean isLessThanAREA2 = false;
+        for(int i = 0; i < numPoints-E_PTS - F_PTS-2; i++){
+            if(Calculator.computeArea(points[i], points[i + E_PTS + 1], points[i + E_PTS + F_PTS + 2]) > AREA1){
+                isGreaterThanAREA1 = true;
+            }
+            if(Calculator.computeArea(points[i], points[i + E_PTS + 1], points[i + E_PTS + F_PTS + 2]) < AREA2){
+                isLessThanAREA2 = true;
+            }
+            if(isGreaterThanAREA1 && isLessThanAREA2) return true;
+        }
+
+        return false;
+
+
+
+    }
+
+
 }
