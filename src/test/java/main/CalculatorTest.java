@@ -36,4 +36,10 @@ class CalculatorTest {
         Point a = new Point(2,2);
         assertEquals(Calculator.computeRadius(a), Math.sqrt(8));
     }
+
+    @Test
+    void computeRadiusTriInCircle() {
+        
+        assertEquals(Calculator.computeRadiusTriInCircle(20,15,25), 12,50);
+    }
 }
