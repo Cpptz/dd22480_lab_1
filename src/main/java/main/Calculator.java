@@ -26,6 +26,7 @@ public class Calculator {
     }
 
     // Calculate the radius needed of a circle to envelop a triangle. (Use for lic#8)
+    // https://en.wikipedia.org/wiki/Circumscribed_circle#Triangle_centers_on_the_circumcircle_of_triangle_ABC
     public static double computeRadiusTriInCircle(double side_a, double side_b, double side_c){
         return ((side_a*side_b*side_c)/(Math.sqrt((side_a + side_b + side_c)*(side_b + side_c - side_a)*(side_c + side_a - side_b)*(side_a + side_b - side_c))));
     }
