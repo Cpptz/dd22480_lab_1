@@ -77,6 +77,36 @@ public class LIC {
         return false;
     }
 
+    static boolean LIC_6(Point[] points, int numPoints) {
+        if(numPoints < 3 || N_PTS < 3 || DIST < 0) {
+            return false;
+        }
+        int first = 0;
+        int last = N_PTS-1;
+
+        while(last < numPoints) {
+            Line line = new Line(points[first], points[last]);
+            for (int i = first + 1; i < last; i++) {
+                double dist;
+                if (Calculator.areIdentical(points[first], points[last])) {
+                    dist = Calculator.computeDistance(points[first], points[i]);
+
+                } else {
+                    dist = Calculator.distToLine(line, points[i]);
+                    // System.out.println(dist);
+
+                }
+                if (dist > DIST) {
+                    return true;
+                }
+            }
+            ++first;
+            ++last;
+        }
+        return false;
+    }
+
+
     public static boolean LIC_7(Point[] points, int numPoints) {
 
         if (numPoints < 3 || K_PTS < 1 || K_PTS > numPoints - 2)  return false;
@@ -93,6 +123,4 @@ public class LIC {
         }
         return false;
     }
-
-
 }

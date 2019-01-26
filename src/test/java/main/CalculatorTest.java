@@ -6,7 +6,17 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorTest {
 
-    private static final double DELTA = 1e-15;
+    private static final double DELTA = 1e-14;
+
+    @Test
+    void distToLine(){
+        Line line = new Line(new Point(2,4), new Point(5, 3));
+        Point p = new Point(5, 2);
+
+        double dist = 1;
+
+        assertEquals(Calculator.distToLine(line, p), 3*Math.sqrt(10)/10,DELTA);
+    }
 
     @Test
     void computeArea() {
@@ -58,5 +68,6 @@ class CalculatorTest {
         b = new Point(-2, 0);
         c = new Point(2, 0);
         assertEquals(Calculator.computeRadiusTriInCircleFromPoints(a,b,c), 2.0f, DELTA);
+        assertEquals(Calculator.computeRadiusTriInCircle(20,15,25), 12,50);
     }
 }
