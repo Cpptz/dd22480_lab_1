@@ -24,8 +24,8 @@ class CalculatorTest {
     }
 
     @Test
-    void computeMaxRadiusTriInCircle() {
+    void computeRadiusTriInCircle() {
         
-        assertEquals(Calculator.computeMaxRadiusTriInCircle(20,15,25), 12,50);
+        assertEquals(Calculator.computeRadiusTriInCircle(20,15,25), 12,50);
     }
 }
