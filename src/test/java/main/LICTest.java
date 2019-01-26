@@ -99,6 +99,24 @@ class LICTest {
     }
 
     @Test
+    void LIC_6a() {
+        LIC.DIST = 3;
+        LIC.N_PTS = 4;
+        Point[] points = {new Point(3, 3), new Point(6, 3), new Point(6, 6),
+                new Point(9, 6), new Point(12, 3), new Point(15, 8)};
+        assertEquals(LIC.LIC_6(points,6), true);
+    }
+
+    @Test
+    void LIC_6b() {
+        LIC.DIST = 5;
+        LIC.N_PTS = 4;
+        Point[] points = {new Point(3, 3), new Point(6, 3), new Point(6, 6),
+                new Point(3, 3), new Point(9, 3), new Point(9, 4)};
+        assertEquals(LIC.LIC_6(points,6), false);
+    }
+
+    @Test
     void LIC_7() {
         LIC.LENGTH1 = 60;
         LIC.K_PTS = 2;
@@ -158,20 +176,47 @@ class LICTest {
     }
 
     @Test
-    void LIC_6a() {
-        LIC.DIST = 3;
-        LIC.N_PTS = 4;
-        Point[] points = {new Point(3, 3), new Point(6, 3), new Point(6, 6),
-                new Point(9, 6), new Point(12, 3), new Point(15, 8)};
-        assertEquals(LIC.LIC_6(points,6), true);
-    }
+    void LIC_14(){
 
-    @Test
-    void LIC_6b() {
-        LIC.DIST = 5;
-        LIC.N_PTS = 4;
-        Point[] points = {new Point(3, 3), new Point(6, 3), new Point(6, 6),
-                new Point(3, 3), new Point(9, 3), new Point(9, 4)};
-        assertEquals(LIC.LIC_6(points,6), false);
+
+        LIC.AREA1 = 1;
+        LIC.AREA2 = 4;
+        LIC.E_PTS = 2;
+        LIC.F_PTS = 1;
+
+        Point a = new Point(0,0);
+        Point b = new Point(20,0);
+        Point c = new Point(0,3);
+        Point d = new Point(0,1.5);
+        Point e = new Point(0.25,0);
+        Point f = new Point(2, 0);
+
+        Point[] points = {a,b,c,d,e,f};
+
+        assertTrue(LIC.LIC_14(points,6));
+
+        // numPoints too small
+        assertFalse(LIC.LIC_14(points, 5));
+
+        // area too small
+        LIC.AREA1 = 2;
+        assertFalse(LIC.LIC_14(points, 6));
+
+        // area too large
+        LIC.AREA1 = 1;
+        LIC.AREA2 = 1.25;
+        assertFalse(LIC.LIC_14(points, 6));
+
+        //not the same set of points which pass conditions
+        LIC.AREA1 = 12;
+        LIC.AREA2 = 0.5;
+        LIC.E_PTS = 1;
+        assertTrue(LIC.LIC_14(points, 6));
+
+        // too much intervening points
+        LIC.E_PTS = 2;
+        LIC.F_PTS = 2;
+        assertFalse(LIC.LIC_14(points, 6));
+
     }
 }
