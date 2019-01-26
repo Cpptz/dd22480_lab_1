@@ -271,6 +271,9 @@ class LICTest {
         Point[] points = {new Point(3, 3), new Point(6, 3), new Point(6, 6),
                 new Point(9, 3), new Point(9, 4), new Point(13, 1), new Point(13, 4)};
         assertTrue(LIC.LIC_13(points, points.length));
+
+        LIC.RADIUS2 = 19;
+        assertFalse(LIC.LIC_13(points, points.length));
     }
 
     @Test
@@ -281,5 +284,8 @@ class LICTest {
         Point[] points = {new Point(3, 3), new Point(6, 3), new Point(6, 6),
                 new Point(9, 3), new Point(9, 4), new Point(13, 1), new Point(13, 4)};
         assertTrue(LIC.LIC_8(points, points.length));
+
+        LIC.RADIUS1 = 21;
+        assertFalse(LIC.LIC_8(points, points.length));
     }
 }
