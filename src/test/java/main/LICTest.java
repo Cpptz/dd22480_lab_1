@@ -99,6 +99,24 @@ class LICTest {
     }
 
     @Test
+    void LIC_6a() {
+        LIC.DIST = 3;
+        LIC.N_PTS = 4;
+        Point[] points = {new Point(3, 3), new Point(6, 3), new Point(6, 6),
+                new Point(9, 6), new Point(12, 3), new Point(15, 8)};
+        assertEquals(LIC.LIC_6(points,6), true);
+    }
+
+    @Test
+    void LIC_6b() {
+        LIC.DIST = 5;
+        LIC.N_PTS = 4;
+        Point[] points = {new Point(3, 3), new Point(6, 3), new Point(6, 6),
+                new Point(3, 3), new Point(9, 3), new Point(9, 4)};
+        assertEquals(LIC.LIC_6(points,6), false);
+    }
+
+    @Test
     void LIC_7() {
         LIC.LENGTH1 = 60;
         LIC.K_PTS = 2;
