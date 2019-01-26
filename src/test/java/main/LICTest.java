@@ -161,6 +161,38 @@ class LICTest {
     }
 
     @Test
+    void LIC_10() {
+        LIC.AREA1 = 1;
+        LIC.E_PTS = 2;
+        LIC.F_PTS = 1;
+
+        Point a = new Point(0,0);
+        Point b = new Point(5,0);
+        Point c = new Point(0,5);
+        Point d = new Point(0,2);
+        Point e = new Point(2,0);
+        Point f = new Point(3,0);
+        Point[] points = {a, b, c, d, e, f};
+
+        assertTrue(LIC.LIC_10(points, 6));
+
+        // if numPoints is to small
+        assertFalse(LIC.LIC_10(points, 5));
+
+        // if the area is to small
+        LIC.AREA1 = 15;
+        assertFalse(LIC.LIC_10(points, 6));
+
+        // if intervening points are < 1
+        LIC.E_PTS = 0;
+        assertFalse(LIC.LIC_10(points, 6));
+        
+        // if to many intervening points
+        LIC.F_PTS = 2;
+        assertFalse(LIC.LIC_10(points, 6));
+    }
+    
+    @Test
     void LIC_11() {
         LIC.G_PTS = 2;
         Point a = new Point(0,0);

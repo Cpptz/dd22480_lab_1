@@ -117,6 +117,21 @@ public class LIC {
         return false;
     }
 
+    public static boolean LIC_10(Point[] points, int numPoints) {
+        if (numPoints < 5 || E_PTS < 1 || F_PTS < 1 || E_PTS + F_PTS > numPoints - 3) {
+            return false;
+        }
+
+        for (int i = 0; i < numPoints - E_PTS - F_PTS - 2; i++) {
+            double area = Calculator.computeArea(points[i], points[i + E_PTS + 1], points[i + E_PTS + F_PTS + 2]);
+            if (area > AREA1) {
+                return true;
+            }
+        }
+        return false;
+        
+    }
+    
     public static boolean LIC_11(Point[] points, int numPoints) {
         if (numPoints < 3 || G_PTS < 1 || G_PTS > numPoints - 2)  return false;
         for (int i = 0; i < numPoints - G_PTS - 1; i++) {
