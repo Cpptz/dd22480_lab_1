@@ -61,6 +61,16 @@ public class LIC {
         return false;
     }
 
+
+    public static boolean LIC_3(Point[] points, int numPoints) {
+        if (AREA1 <= 0) { return false; }
+        for (int i = 0; i < numPoints - 2; i++) {
+            double triangleArea = Calculator.computeArea(points[i], points[i + 1], points[i + 2]);
+            if (triangleArea > AREA1) return true;
+        }
+        return false;
+    }
+
     public static boolean LIC_5(Point[] points, int numPoints) {
         for (int i = 0; i < numPoints - 1; i++) {
             if (points[i+1].x - points[i].x < 0) return true;
@@ -77,11 +87,10 @@ public class LIC {
         return false;
     }
 
-    public static boolean LIC_3(Point[] points, int numPoints) {
-        if (AREA1 <= 0) { return false; }
-        for (int i = 0; i < numPoints - 2; i++) {
-            double triangleArea = Calculator.computeArea(points[i], points[i + 1], points[i + 2]);
-            if (triangleArea > AREA1) return true;
+    public static boolean LIC_11(Point[] points, int numPoints) {
+        if (numPoints < 3 || G_PTS < 1 || G_PTS > numPoints - 2)  return false;
+        for (int i = 0; i < numPoints - G_PTS - 1; i++) {
+            if (points[i+G_PTS+1].x - points[i].x < 0) return true;
         }
         return false;
     }
