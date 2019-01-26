@@ -163,7 +163,7 @@ class LICTest {
         LIC.N_PTS = 4;
         Point[] points = {new Point(3, 3), new Point(6, 3), new Point(6, 6),
                 new Point(9, 6), new Point(12, 3), new Point(15, 8)};
-        assertEquals(LIC.LIC_6(points), true);
+        assertEquals(LIC.LIC_6(points,6), true);
     }
 
     @Test
@@ -172,6 +172,6 @@ class LICTest {
         LIC.N_PTS = 4;
         Point[] points = {new Point(3, 3), new Point(6, 3), new Point(6, 6),
                 new Point(3, 3), new Point(9, 3), new Point(9, 4)};
-        assertEquals(LIC.LIC_6(points), false);
+        assertEquals(LIC.LIC_6(points,6), false);
     }
 }

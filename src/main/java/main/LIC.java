@@ -94,7 +94,7 @@ public class LIC {
 
                 } else {
                     dist = Calculator.distToLine(line, points[i]);
-                    System.out.println(dist);
+                    // System.out.println(dist);
 
                 }
                 if (dist > DIST) {
