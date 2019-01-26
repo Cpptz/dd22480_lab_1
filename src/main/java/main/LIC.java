@@ -140,41 +140,21 @@ public class LIC {
         return false;
     }
 
-    static boolean LIC_8(Point[] points, int numPoints, boolean radius1) {
-        // base case
-        if(numPoints < 5 || (A_PTS + B_PTS) > (numPoints - 3) || A_PTS < 1 || B_PTS < 1){
-            return false;
-        }
-        int first = 0;
-        int middle = first + A_PTS + 1;
-        int last = middle + B_PTS + 1;
 
-        while(last < numPoints) {
-            double side1 = Calculator.computeDistance(points[first], points[middle]);
-            double side2 = Calculator.computeDistance(points[last], points[middle]);
-            double side3 = Calculator.computeDistance(points[first], points[last]);
-            double radius = Calculator.computeRadiusTriInCircle(side1, side2, side3);
+    public static boolean LIC_8(Point[] points, int numPoints) {
 
-            if(radius1) {
-                if (radius > RADIUS1) {
-                    return true;
-                }
-            }
-            else {
-                if (radius > RADIUS2) {
-                    return true;
-                }
-            }
-            ++first;
-            ++middle;
-            ++last;
-        }
-        return false;
+        if(RADIUS1 < 0 ) return false;
+
+        return  setCannotBeContained(points, numPoints, RADIUS1);
     }
 
-    // LIC_13 uses LIC_8
-    static boolean LIC_13(Point[] points, int numPoints) {
-        if(LIC_8(points, numPoints, true) && LIC_8(points, numPoints,false)) {
+
+
+    public static boolean LIC_13(Point[] points, int numPoints) {
+        // cannot be contained AND can be contained
+        if(RADIUS1 < 0 || RADIUS2 <0 ) return false;
+
+        if(setCannotBeContained(points, numPoints, RADIUS1) && !setCannotBeContained(points, numPoints,RADIUS2)) {
             return true;
         }
         return false;
@@ -198,6 +178,30 @@ public class LIC {
                 isLessThanAREA2 = true;
             }
             if(isGreaterThanAREA1 && isLessThanAREA2) return true;
+        }
+        return false;
+    }
+
+
+    private static Boolean setCannotBeContained(Point[] points, int numPoints, double radius_ref) {
+        if(numPoints < 5 || (A_PTS + B_PTS) > (numPoints - 3) || A_PTS < 1 || B_PTS < 1){
+            return false;
+        }
+        int first = 0;
+        int middle = first + A_PTS + 1;
+        int last = middle + B_PTS + 1;
+
+        while(last < numPoints) {
+            double radius = Calculator.computeRadiusTriInCircleFromPoints(points[first], points[middle], points[last]);
+
+
+            if (radius > radius_ref) {
+                return true;
+            }
+
+            ++first;
+            ++middle;
+            ++last;
         }
         return false;
     }
