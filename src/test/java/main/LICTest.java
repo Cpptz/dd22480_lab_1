@@ -261,4 +261,31 @@ class LICTest {
         assertFalse(LIC.LIC_14(points, 6));
 
     }
+
+    @Test
+    void LIC_13() {
+        LIC.RADIUS1 = 20;
+        LIC.RADIUS2 = 21;
+        LIC.A_PTS = 2;
+        LIC.B_PTS = 2;
+        Point[] points = {new Point(3, 3), new Point(6, 3), new Point(6, 6),
+                new Point(9, 3), new Point(9, 4), new Point(13, 1), new Point(13, 4)};
+        assertTrue(LIC.LIC_13(points, points.length));
+
+        LIC.RADIUS2 = 19;
+        assertFalse(LIC.LIC_13(points, points.length));
+    }
+
+    @Test
+    void LIC_8() {
+        LIC.RADIUS1 = 20;
+        LIC.A_PTS = 2;
+        LIC.B_PTS = 2;
+        Point[] points = {new Point(3, 3), new Point(6, 3), new Point(6, 6),
+                new Point(9, 3), new Point(9, 4), new Point(13, 1), new Point(13, 4)};
+        assertTrue(LIC.LIC_8(points, points.length));
+
+        LIC.RADIUS1 = 21;
+        assertFalse(LIC.LIC_8(points, points.length));
+    }
 }

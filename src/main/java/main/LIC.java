@@ -141,6 +141,25 @@ public class LIC {
     }
 
 
+    public static boolean LIC_8(Point[] points, int numPoints) {
+
+        if(RADIUS1 < 0 ) return false;
+
+        return  setCannotBeContained(points, numPoints, RADIUS1);
+    }
+
+
+
+    public static boolean LIC_13(Point[] points, int numPoints) {
+        // cannot be contained AND can be contained
+        if(RADIUS1 < 0 || RADIUS2 <0 ) return false;
+
+        if(setCannotBeContained(points, numPoints, RADIUS1) && !setCannotBeContained(points, numPoints,RADIUS2)) {
+            return true;
+        }
+        return false;
+    }
+
     public static boolean LIC_14(Point[] points, int numPoints){
         if(AREA1 < 0 || AREA2 <0 || E_PTS <1 || F_PTS < 1 || numPoints < 5 || E_PTS + F_PTS > numPoints - 3){
             return  false;
@@ -160,12 +179,30 @@ public class LIC {
             }
             if(isGreaterThanAREA1 && isLessThanAREA2) return true;
         }
-
         return false;
-
-
-
     }
 
 
+    private static Boolean setCannotBeContained(Point[] points, int numPoints, double radius_ref) {
+        if(numPoints < 5 || (A_PTS + B_PTS) > (numPoints - 3) || A_PTS < 1 || B_PTS < 1){
+            return false;
+        }
+        int first = 0;
+        int middle = first + A_PTS + 1;
+        int last = middle + B_PTS + 1;
+
+        while(last < numPoints) {
+            double radius = Calculator.computeRadiusTriInCircleFromPoints(points[first], points[middle], points[last]);
+
+
+            if (radius > radius_ref) {
+                return true;
+            }
+
+            ++first;
+            ++middle;
+            ++last;
+        }
+        return false;
+    }
 }
