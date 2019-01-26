@@ -190,18 +190,15 @@ class LICTest {
         assertFalse(LIC.LIC_14(points, 6));
 
         //not the same set of points which pass conditions
-        LIC.AREA1 = 8;
-        LIC.AREA2 = 1.25;
+        LIC.AREA1 = 12;
+        LIC.AREA2 = 0.5;
         LIC.E_PTS = 1;
         assertTrue(LIC.LIC_14(points, 6));
 
-
-
-
-
-
-
-
+        // too much intervening points
+        LIC.E_PTS = 2;
+        LIC.F_PTS = 2;
+        assertFalse(LIC.LIC_14(points, 6));
 
     }
 }
