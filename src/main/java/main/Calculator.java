@@ -17,16 +17,16 @@ public class Calculator {
     // calc angle
 
     // calc area
-
-    // quadrant
-
+    public static double computeArea(Point a, Point b, Point c) {
+        return Math.abs((a.x * (b.y - c.y) + b.x * (c.y - a.y) + c.x * (a.y - b.y)) / 2);
+        // quadrant
+    }
     // distance
     public static double computeDistance(Point a, Point b){
         return Math.sqrt(Math.pow((a.x-b.x),2)+Math.pow(a.y-b.y,2));
     }
 
-
-    public static double distToLine(Line line, Point current) {
+    static double distToLine(Line line, Point current) {
         // if point is on line
         if(current.y == line.k * current.x + line.m){
             return 0;
@@ -47,12 +47,18 @@ public class Calculator {
         return computeDistance(current, newPoint);
     }
 
-    public static boolean areIdentical(Point a, Point b) {
+    static boolean areIdentical(Point a, Point b) {
         if((a.x == b.x) && (a.y == b.y)) {
             return true;
         }
         else
             return false;
 
+    }
+  
+    // Calculate the radius needed of a circle to envelop a triangle. (Use for lic#8)
+    // https://en.wikipedia.org/wiki/Circumscribed_circle#Triangle_centers_on_the_circumcircle_of_triangle_ABC
+    public static double computeRadiusTriInCircle(double side_a, double side_b, double side_c){
+        return ((side_a*side_b*side_c)/(Math.sqrt((side_a + side_b + side_c)*(side_b + side_c - side_a)*(side_c + side_a - side_b)*(side_a + side_b - side_c))));
     }
 }
