@@ -128,8 +128,24 @@ class LICTest {
         // this should fail since K_PTS is more than numPoints - 2
         LIC.K_PTS = 5;
         assertFalse(LIC.LIC_7(points,6));
+    }
 
+    @Test
+    void LIC_8() {
+        LIC.RADIUS1 = 6;
+        LIC.A_PTS = 2;
+        LIC.B_PTS = 2;
+        Point a = new Point(3,3);
+        Point b = new Point(6,3);
+        Point c = new Point(6,6);
+        Point d = new Point(9,3);
+        Point e = new Point(9,4);
+        Point f = new Point(13,1);
+        Point g = new Point(13,4);
 
+        Point[] points = {a,b,c,d,e,f,g};
+
+        assertTrue(LIC.LIC_8(points, points.length));
     }
 
     @Test
