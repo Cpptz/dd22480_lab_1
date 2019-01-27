@@ -5,16 +5,18 @@ package main;
 
 public class Calculator {
 
-    /**
-     *
-     * @param a
-     * @return distance with the origin
-     */
-    public static double computeRadius(Point a){
-        return computeDistance(new Point(0,0), a);
-    }
 
-    // calc angle
+
+    /**
+     * All points should be different
+     * @param a
+     * @param b
+     * @param c
+     * @return return angle in [0;2pi]
+     */
+    public static double computeAngle(Point a, Point b, Point c){
+        return Math.abs(Math.atan2(a.y-b.y,a.x-b.x)-Math.atan2(c.y-b.y,c.x-b.x));
+    }
 
     // calc area
     public static double computeArea(Point a, Point b, Point c) {
