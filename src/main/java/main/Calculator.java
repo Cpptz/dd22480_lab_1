@@ -12,10 +12,12 @@ public class Calculator {
      * @param a
      * @param b
      * @param c
-     * @return return angle in [0;2pi]
+     * @return return angle in [0;pi]
      */
     public static double computeAngle(Point a, Point b, Point c){
-        return Math.abs(Math.atan2(a.y-b.y,a.x-b.x)-Math.atan2(c.y-b.y,c.x-b.x));
+        double scalarProduct = (a.x - b.x)*(c.x- b.x)+(a.y-b.y)*(c.y -b.y);
+        double productOfNorms = computeDistance(a,b)*computeDistance(b,c);
+        return Math.acos(scalarProduct/productOfNorms);
     }
 
     // calc area
@@ -70,7 +72,7 @@ public class Calculator {
      * @param a
      * @param b
      * @param c
-     * @return alculate the radius needed of a circle to envelop a triangle. (Use for lic#8)
+     * @return Calculate the radius needed of a circle to envelop a triangle. (Use for lic#8)
      * or max pairwise distance if they are on the same line
      */
     public static double computeRadiusTriInCircleFromPoints(Point a, Point b, Point c){
@@ -81,11 +83,23 @@ public class Calculator {
             return maxDistance;
         }
 
-        // compute radius of the circumcircle of triangle ABC
-        double side_a = computeDistance(a,b);
-        double side_b = computeDistance(a,c);
-        double side_c= computeDistance(b,c);
-        return ((side_a*side_b*side_c)/(Math.sqrt((side_a + side_b + side_c)*(side_b + side_c - side_a)*(side_c + side_a - side_b)*(side_a + side_b - side_c))));
+        // check if triangle is obtusangle
+        double angle1 = computeAngle(a,b,c);
+        double angle2 = computeAngle(a,c,b);
+        double angle3 = computeAngle(b,a,c);
+
+        if(angle1 > Math.PI/2 || angle2 > Math.PI/2 || angle3 > Math.PI/2)
+            return Math.max(Math.max(computeDistance(a,b),computeDistance(a,c)), computeDistance(b,c));
+
+        else{
+            // compute radius of the circumcircle of triangle ABC
+            double side_a = computeDistance(a,b);
+            double side_b = computeDistance(a,c);
+            double side_c= computeDistance(b,c);
+            return computeRadiusTriInCircle(side_a,side_b,side_c);
+        }
+
+
     }
 
 }

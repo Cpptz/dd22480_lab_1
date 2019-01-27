@@ -161,6 +161,26 @@ class LICTest {
     }
 
     @Test
+    void LIC_9() {
+        LIC.PI = 3.1415926535;
+        LIC.EPSILON = 0.05;
+        LIC.C_PTS = 1;
+        LIC.D_PTS = 1;
+
+        Point[] points = {
+                new Point(0,1),
+                new Point(0.5,Math.sqrt(3)/2),
+                new Point(1,0),
+                new Point(0.5,-Math.sqrt(3)/2),
+                new Point(0, -1),
+                new Point(-0.4, -Math.sqrt(0.84)),
+                new Point(-1,0),
+                new Point(-0.4, Math.sqrt(0.84))};
+        assertTrue(LIC.LIC_9(points, points.length));
+    }
+
+
+    @Test
     void LIC_10() {
         LIC.AREA1 = 1;
         LIC.E_PTS = 2;
