@@ -6,7 +6,7 @@ public class LIC {
     private static final double DELTA = 1e-15;
 
 
-    static double PI = 3.1415926535;
+    static double PI;
     static double LENGTH1;
     static double RADIUS1;
     static double EPSILON;
@@ -18,8 +18,8 @@ public class LIC {
     static int K_PTS;
     static int A_PTS;
     static int B_PTS;
-    static int C_PTS = 1;
-    static int D_PTS = 1;
+    static int C_PTS;
+    static int D_PTS;
     static int E_PTS;
     static int F_PTS;
     static int G_PTS;
