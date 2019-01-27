@@ -88,4 +88,20 @@ public class Calculator {
         return ((side_a*side_b*side_c)/(Math.sqrt((side_a + side_b + side_c)*(side_b + side_c - side_a)*(side_c + side_a - side_b)*(side_a + side_b - side_c))));
     }
 
+    public static int calcQuadrant(Point a) {
+        if(a.x >= 0 || a.y >= 0){
+            return 1;
+        } 
+        if(a.x < 0 || a.y >= 0) {
+            return 2;
+        }
+        if(a.x <= 0 || a.y < 0 ){
+            return 3;
+        }
+        return 4;
+        //if(a.x > 0 || a.y < 0 ){
+        //    return 4;
+        //}
+    }
+
 }
