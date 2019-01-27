@@ -218,6 +218,44 @@ class LICTest {
     }
 
     @Test
+    void LIC_12() {
+        LIC.K_PTS = 2;
+        LIC.LENGTH1 = 5;
+        LIC.LENGTH2 = 20;
+
+        Point a = new Point(0,0);
+        Point b = new Point(1,0);
+        Point c = new Point(2,0);
+        Point d = new Point(0,4);
+        Point e = new Point(0,5);
+        Point f = new Point(0,8);
+
+        Point[] points = {a, b, c, d, e, f};
+
+        // false if numPoints < 3
+        assertFalse(LIC.LIC_12(points, 2));
+
+        //Should fail because distance is less than LENGTH1
+        assertFalse(LIC.LIC_12(points, 3));
+
+        //Should be true since distance is greater than LENGTH1 and less than LENGTH2
+        assertTrue(LIC.LIC_12(points, 6));
+
+        LIC.K_PTS = 0;
+        //Should fail since K_PTS less than 1
+        assertFalse(LIC.LIC_12(points, 6));
+
+        LIC.K_PTS = 5;
+        //Should fail since K_PTS is more than numPoints - 2.
+        assertFalse(LIC.LIC_12(points, 6));
+
+        LIC.K_PTS = 2;
+        LIC.LENGTH2 = 2;
+        //Should fail since distance is greater than LENGTH2
+        assertFalse(LIC.LIC_12(points,6));
+    }
+
+    @Test
     void LIC_14(){
 
 
