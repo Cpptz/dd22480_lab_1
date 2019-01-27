@@ -185,6 +185,26 @@ class LICTest {
     }
 
     @Test
+    void LIC_9() {
+        LIC.PI = 3.1415926535;
+        LIC.EPSILON = 0.05;
+        LIC.C_PTS = 1;
+        LIC.D_PTS = 1;
+
+        Point[] points = {
+                new Point(0,1),
+                new Point(0.5,Math.sqrt(3)/2),
+                new Point(1,0),
+                new Point(0.5,-Math.sqrt(3)/2),
+                new Point(0, -1),
+                new Point(-0.4, -Math.sqrt(0.84)),
+                new Point(-1,0),
+                new Point(-0.4, Math.sqrt(0.84))};
+        assertTrue(LIC.LIC_9(points, points.length));
+    }
+
+
+    @Test
     void LIC_10() {
         LIC.AREA1 = 1;
         LIC.E_PTS = 2;
@@ -239,6 +259,44 @@ class LICTest {
         // this should fail since G_PTS is more than numPoints - 2
         LIC.G_PTS = 5;
         assertFalse(LIC.LIC_11(points,6));
+    }
+
+    @Test
+    void LIC_12() {
+        LIC.K_PTS = 2;
+        LIC.LENGTH1 = 5;
+        LIC.LENGTH2 = 20;
+
+        Point a = new Point(0,0);
+        Point b = new Point(1,0);
+        Point c = new Point(2,0);
+        Point d = new Point(0,4);
+        Point e = new Point(0,5);
+        Point f = new Point(0,8);
+
+        Point[] points = {a, b, c, d, e, f};
+
+        // false if numPoints < 3
+        assertFalse(LIC.LIC_12(points, 2));
+
+        //Should fail because distance is less than LENGTH1
+        assertFalse(LIC.LIC_12(points, 3));
+
+        //Should be true since distance is greater than LENGTH1 and less than LENGTH2
+        assertTrue(LIC.LIC_12(points, 6));
+
+        LIC.K_PTS = 0;
+        //Should fail since K_PTS less than 1
+        assertFalse(LIC.LIC_12(points, 6));
+
+        LIC.K_PTS = 5;
+        //Should fail since K_PTS is more than numPoints - 2.
+        assertFalse(LIC.LIC_12(points, 6));
+
+        LIC.K_PTS = 2;
+        LIC.LENGTH2 = 2;
+        //Should fail since distance is greater than LENGTH2
+        assertFalse(LIC.LIC_12(points,6));
     }
 
     @Test

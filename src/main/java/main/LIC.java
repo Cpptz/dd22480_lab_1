@@ -6,7 +6,7 @@ public class LIC {
     private static final double DELTA = 1e-15;
 
 
-
+    static double PI;
     static double LENGTH1;
     static double RADIUS1;
     static double EPSILON;
@@ -150,9 +150,9 @@ public class LIC {
             }
         }
         return false;
-        
+
     }
-    
+
     public static boolean LIC_11(Point[] points, int numPoints) {
         if (numPoints < 3 || G_PTS < 1 || G_PTS > numPoints - 2)  return false;
         for (int i = 0; i < numPoints - G_PTS - 1; i++) {
@@ -161,6 +161,30 @@ public class LIC {
         return false;
     }
 
+    public static boolean LIC_12(Point[] points, int numPoints) {
+        if(numPoints < 3 || LENGTH2 < 0 || K_PTS < 1 || K_PTS > numPoints - 2) {
+            return false;
+        }
+        boolean isGreaterThanLENGTH1 = false;
+        boolean isLessThanLENGTH2 = false;
+        for(int i = 0; i < numPoints - K_PTS - 1; i++) {
+            double distance = Calculator.computeDistance(points[i], points[i + K_PTS + 1]);
+
+            if(distance > LENGTH1) {
+                isGreaterThanLENGTH1 = true;
+            }
+            if(distance < LENGTH2) {
+                isLessThanLENGTH2 = true;
+            }
+
+            if(isGreaterThanLENGTH1 && isLessThanLENGTH2) {
+                return true;
+            }
+
+        }
+
+        return false;
+    }
 
     public static boolean LIC_8(Point[] points, int numPoints) {
 
@@ -169,6 +193,30 @@ public class LIC {
         return  setCannotBeContained(points, numPoints, RADIUS1);
     }
 
+
+    public static boolean LIC_9(Point[] points, int numPoints) {
+        // base case
+        if(numPoints < 5 || C_PTS < 1 || D_PTS < 1 || (C_PTS + D_PTS > numPoints - 3)) {
+            return false;
+        }
+
+        int first = 0;
+        int middle = first + C_PTS + 1;
+        int last = middle + D_PTS + 1;
+
+        while(last < numPoints) {
+            if(!Calculator.areIdentical(points[first], points[middle]) && !Calculator.areIdentical(points[middle], points[last])) {
+                double angle = Calculator.computeAngle(points[first], points[middle], points[last]);
+                if (angle < PI - EPSILON || angle > PI + EPSILON) {
+                    return true;
+                }
+            }
+            ++first;
+            ++middle;
+            ++last;
+        }
+        return false;
+    }
 
 
     public static boolean LIC_13(Point[] points, int numPoints) {

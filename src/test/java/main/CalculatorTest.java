@@ -62,7 +62,12 @@ class CalculatorTest {
         b = new Point(-2, 0);
         c = new Point(2, 0);
         assertEquals(Calculator.computeRadiusTriInCircleFromPoints(a,b,c), 2.0f, DELTA);
-        assertEquals(Calculator.computeRadiusTriInCircle(20,15,25), 12,50);
+
+        a = new Point(-5, 0);
+        b = new Point(0, 0.75);
+        c = new Point(5, 0);
+
+        assertEquals(Calculator.computeRadiusTriInCircleFromPoints(a,b,c), 10.0, DELTA);
     }
 
     @Test
@@ -71,6 +76,14 @@ class CalculatorTest {
         Point b = new Point(0, 0);
         Point c = new Point(-1, -1);
         assertEquals(Calculator.computeAngle(a,b,c),165.0/180.0*Math.PI,DELTA);
+        assertEquals(Calculator.computeAngle(c,b,a),165.0/180.0*Math.PI,DELTA);
+
+        a = new Point(-1, 1);
+        b = new Point(0, 0);
+        c = new Point(-1, -1);
+        assertEquals(Calculator.computeAngle(a,b,c),90.0/180.0*Math.PI,DELTA);
+        assertEquals(Calculator.computeAngle(c,b,a),90.0/180.0*Math.PI,DELTA);
+
     }
 
     @Test
