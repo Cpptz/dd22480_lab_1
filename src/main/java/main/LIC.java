@@ -67,7 +67,7 @@ public class LIC {
         for(int i = 0; i < numPoints - 2; i++) {
             if(!Calculator.areIdentical(points[i], points[i+1]) && !Calculator.areIdentical(points[i+1], points[i+2])) {
                 double angle = Calculator.computeAngle(points[i], points[i+1], points[i+2]);
-                if(angle < Math.PI - EPSILON || angle > Math.PI + EPSILON && angle != 0) {
+                if(angle < Math.PI - EPSILON || angle > Math.PI + EPSILON) {
                     return true;
                 }
             }
