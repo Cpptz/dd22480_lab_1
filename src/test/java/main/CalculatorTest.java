@@ -42,17 +42,11 @@ class CalculatorTest {
         assertEquals(Calculator.computeDistance(a,b), Math.sqrt(13));
     }
 
-    @Test
-    void computeRadius() {
-
-        Point a = new Point(2,2);
-        assertEquals(Calculator.computeRadius(a), Math.sqrt(8));
-    }
 
     @Test
     void computeRadiusTriInCircle() {
         
-        assertEquals(Calculator.computeRadiusTriInCircle(20,15,25), 12,DELTA);
+        assertEquals(Calculator.computeRadiusTriInCircle(20,15,25), 12.5,DELTA);
     }
 
 
@@ -69,5 +63,13 @@ class CalculatorTest {
         c = new Point(2, 0);
         assertEquals(Calculator.computeRadiusTriInCircleFromPoints(a,b,c), 2.0f, DELTA);
         assertEquals(Calculator.computeRadiusTriInCircle(20,15,25), 12,50);
+    }
+
+    @Test
+    void computeAngle(){
+        Point a = new Point(Math.cos(Math.PI/6), Math.sin(Math.PI/6));
+        Point b = new Point(0, 0);
+        Point c = new Point(-1, -1);
+        assertEquals(Calculator.computeAngle(a,b,c),165.0/180.0*Math.PI,DELTA);
     }
 }
