@@ -61,15 +61,18 @@ public class Main {
 
         // PUM + PUV => FUV
         for (int i = 0; i < dimension; i++) {
-            //base case
-            FUV[i] = false;
-
             if (PUV[i] == false)
                 FUV[i] = true;
             else {
+                // base case
+                FUV[i] = true;
+                // if one is false, FUV[i] is false
                 for (int j = 0; j < dimension; j++) {
-                    if (i != j && PUM[i][j] == true)
-                        FUV[i] = true;
+                    if (i != j && PUM[i][j] == false){
+                        FUV[i] = false;
+                        break;
+                    }
+
                 }
 
             }
@@ -77,8 +80,8 @@ public class Main {
         }
 
 
-        // Launch
-        return Arrays.asList(FUV).contains(false);
+        // Launch, FUV doesn't contain any false
+        return !Arrays.asList(FUV).contains(false);
 
 
     }
