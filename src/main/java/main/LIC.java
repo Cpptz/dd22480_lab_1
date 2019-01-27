@@ -60,7 +60,18 @@ public class LIC {
         return false;
     }
 
-
+    public static boolean LIC_2(Point[] points, int numPoints) {
+        if(EPSILON < 0 || EPSILON >= Math.PI || numPoints < 3) {
+            return false;
+        }
+        for(int i = 0; i < numPoints - 2; i++) {
+            double angle = Calculator.computeAngle(points[i], points[i+1], points[i+2]);
+            if(angle < Math.PI - EPSILON || angle > Math.PI + EPSILON && angle != 0) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public static boolean LIC_3(Point[] points, int numPoints) {
         if (AREA1 <= 0) { return false; }
