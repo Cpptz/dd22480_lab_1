@@ -67,6 +67,35 @@ class LICTest {
     }
 
     @Test
+    void LIC_2() {
+        LIC.EPSILON = -1;
+
+        Point a = new Point(0,0);
+        Point b = new Point(1,2);
+        Point c = new Point(2,0);
+        Point[] points = {a, b, c};
+
+        // if EPSILON z 0
+        assertFalse(LIC.LIC_2(points, 3));
+        //If EPSILON > PI
+        LIC.EPSILON = 4;
+        assertFalse(LIC.LIC_2(points, 3));
+
+        //if numPoints < 3
+        assertFalse(LIC.LIC_2(points, 2));
+
+        LIC.EPSILON = 0;
+        assertTrue(LIC.LIC_2(points, 3));
+
+        //try with threeee points where the first or last is the same as the vertex
+        Point d = new Point(0,0);
+        Point e = new Point(1,2);
+        Point f = new Point(1,2);
+        Point[] newpoints = {d, e, f};
+        assertFalse(LIC.LIC_2(newpoints, 3));
+    }
+    
+    @Test
     void LIC_3() {
         LIC.AREA1 = 20;
         Point a = new Point(0,0);
