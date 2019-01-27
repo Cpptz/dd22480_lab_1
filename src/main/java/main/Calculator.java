@@ -20,16 +20,34 @@ class Calculator {
         return Math.acos(scalarProduct/productOfNorms);
     }
 
-    // calc area
+    /**
+     *
+     * @param a
+     * @param b
+     * @param c
+     * @return area of a triangle defined by the three points
+     */
     static double computeArea(Point a, Point b, Point c) {
         return Math.abs((a.x * (b.y - c.y) + b.x * (c.y - a.y) + c.x * (a.y - b.y)) / 2);
-        // quadrant
+
     }
-    // distance
+
+    /**
+     *
+     * @param a
+     * @param b
+     * @return distance between two points
+     */
     static double computeDistance(Point a, Point b){
         return Math.sqrt(Math.pow((a.x-b.x),2)+Math.pow(a.y-b.y,2));
     }
 
+    /**
+     *
+     * @param line
+     * @param current
+     * @return distance between current and the line
+     */
     static double distToLine(Line line, Point current) {
         // if point is on line
         if(current.y == line.k * current.x + line.m){
@@ -51,6 +69,12 @@ class Calculator {
         return computeDistance(current, newPoint);
     }
 
+    /**
+     *
+     * @param a
+     * @param b
+     * @return true if the two points are identical
+     */
     static boolean areIdentical(Point a, Point b) {
         if((a.x == b.x) && (a.y == b.y)) {
             return true;
@@ -60,8 +84,16 @@ class Calculator {
 
     }
 
-    // Calculate the radius needed of a circle to envelop a triangle. (Use for lic#8)
-    // https://en.wikipedia.org/wiki/Circumscribed_circle#Triangle_centers_on_the_circumcircle_of_triangle_ABC
+
+
+    /**
+     *
+     * @param side_a
+     * @param side_b
+     * @param side_c
+     * @return the radius of circumscribed circle of the triangle defined by the three points
+     *     // https://en.wikipedia.org/wiki/Circumscribed_circle#Triangle_centers_on_the_circumcircle_of_triangle_ABC
+     */
     static double computeRadiusTriInCircle(double side_a, double side_b, double side_c){
         return ((side_a*side_b*side_c)/(Math.sqrt((side_a + side_b + side_c)*(side_b + side_c - side_a)*(side_c + side_a - side_b)*(side_a + side_b - side_c))));
     }
@@ -102,6 +134,11 @@ class Calculator {
 
     }
 
+    /**
+     * 
+     * @param a
+     * @return the quadrant in which the point is
+     */
     static int calcQuadrant(Point a) {
         if(a.x >= 0 && a.y >= 0){
             return 1;
@@ -117,3 +154,4 @@ class Calculator {
     }
 
 }
+
