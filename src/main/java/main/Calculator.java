@@ -12,12 +12,10 @@ public class Calculator {
      * @param a
      * @param b
      * @param c
-     * @return return angle in [0;pi]
+     * @return return angle in [0;2pi]
      */
     public static double computeAngle(Point a, Point b, Point c){
-        double scalarProduct = (a.x - b.x)*(c.x- b.x)+(a.y-b.y)*(c.y -b.y);
-        double productOfNorms = computeDistance(a,b)*computeDistance(b,c);
-        return Math.acos(scalarProduct/productOfNorms);
+        return Math.abs(Math.atan2(a.y-b.y,a.x-b.x)-Math.atan2(c.y-b.y,c.x-b.x));
     }
 
     // calc area
