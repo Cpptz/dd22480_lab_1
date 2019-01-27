@@ -171,7 +171,7 @@ class LICTest {
     }
 
     @Test
-    void LIC_6a() {
+    void LIC_6() {
         LIC.DIST = 3;
         LIC.N_PTS = 4;
         Point[] points = {
@@ -181,21 +181,12 @@ class LICTest {
                 new Point(9, 6),
                 new Point(12, 3),
                 new Point(15, 8)};
-        assertEquals(LIC.LIC_6(points,6), true);
-    }
+        // should pass since there are distances fulfilling the requirements that are larger than DIST
+        assertTrue(LIC.LIC_6(points,6));
 
-    @Test
-    void LIC_6b() {
-        LIC.DIST = 5;
-        LIC.N_PTS = 4;
-        Point[] points = {
-                new Point(3, 3),
-                new Point(6, 3),
-                new Point(6, 6),
-                new Point(3, 3),
-                new Point(9, 3),
-                new Point(9, 4)};
-        assertEquals(LIC.LIC_6(points,6), false);
+        // should fail since there are no distances fulfilling the requirements that are larger than DIST
+        LIC.DIST = 10;
+        assertFalse(LIC.LIC_6(points,6));
     }
 
     @Test
@@ -245,8 +236,11 @@ class LICTest {
                 new Point(9, 4),
                 new Point(13, 1),
                 new Point(13, 4)};
+
+        // should pass because there is a set which cannot be contained within RADIUS1
         assertTrue(LIC.LIC_8(points, points.length));
 
+        // should fail because there are no sets which cannot be contained within RADIUS1
         LIC.RADIUS1 = 11;
         assertFalse(LIC.LIC_8(points, points.length));
     }
@@ -267,7 +261,13 @@ class LICTest {
                 new Point(-0.4, -Math.sqrt(0.84)),
                 new Point(-1,0),
                 new Point(-0.4, Math.sqrt(0.84))};
+
+        // should pass since there is an angle > PI - EPSILON
         assertTrue(LIC.LIC_9(points, points.length));
+
+        // should fail since there is no angle < PI - EPSILON nor an angle > PI + EPSILON
+        LIC.EPSILON = 1.8;
+        assertFalse(LIC.LIC_9(points, points.length));
     }
 
 
@@ -380,8 +380,10 @@ class LICTest {
                 new Point(9, 4),
                 new Point(13, 1),
                 new Point(13, 4)};
+        // should pass because there is at least one set which cannot be contained
         assertTrue(LIC.LIC_13(points, points.length));
 
+        // should fail because RADIUS2 is smaller than RADIUS1
         LIC.RADIUS2 = 9;
         assertFalse(LIC.LIC_13(points, points.length));
     }
