@@ -92,7 +92,7 @@ class MainTest {
                 };
 
 
-        assertFalse(Main.decide());
+        assertTrue(Main.decide());
 
 
 
