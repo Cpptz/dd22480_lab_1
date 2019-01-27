@@ -85,4 +85,17 @@ class CalculatorTest {
         assertEquals(Calculator.computeAngle(c,b,a),90.0/180.0*Math.PI,DELTA);
 
     }
+
+    @Test
+    void calcQuadrant(){
+        Point a = new Point(0, 0);
+        Point b = new Point(0, -1);
+        Point c = new Point(-1, 0);
+        Point d = new Point(1, -1);
+
+        assertEquals(Calculator.calcQuadrant(a), 1);
+        assertEquals(Calculator.calcQuadrant(b), 3);
+        assertEquals(Calculator.calcQuadrant(c), 2);
+        assertEquals(Calculator.calcQuadrant(d), 4);
+    }
 }

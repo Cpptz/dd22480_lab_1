@@ -93,6 +93,30 @@ class LICTest {
     }
 
     @Test
+    void LIC_4() {
+        LIC.QUADS = 2;
+        LIC.Q_PTS = 2;
+        Point a = new Point(0,0);
+        Point b = new Point(-4,3);
+        Point c = new Point(-2,-3);
+        Point d = new Point(0,-3);
+        Point e = new Point(-3,3);
+
+        Point[] points = {a,b,c,d,e};
+
+        assertEquals(LIC.LIC_4(points,5),false);
+
+        LIC.Q_PTS = 3;
+
+        assertEquals(LIC.LIC_4(points,5),true);
+
+        LIC.QUADS = 3;
+        assertEquals(LIC.LIC_4(points,5),false);
+
+
+    }
+
+    @Test
     void LIC_5() {
         Point a = new Point(0,0);
         Point b = new Point(0,3);
@@ -322,28 +346,28 @@ class LICTest {
 
     @Test
     void LIC_13() {
-        LIC.RADIUS1 = 20;
-        LIC.RADIUS2 = 21;
+        LIC.RADIUS1 = 10;
+        LIC.RADIUS2 = 11;
         LIC.A_PTS = 2;
         LIC.B_PTS = 2;
         Point[] points = {new Point(3, 3), new Point(6, 3), new Point(6, 6),
                 new Point(9, 3), new Point(9, 4), new Point(13, 1), new Point(13, 4)};
         assertTrue(LIC.LIC_13(points, points.length));
 
-        LIC.RADIUS2 = 19;
+        LIC.RADIUS2 = 9;
         assertFalse(LIC.LIC_13(points, points.length));
     }
 
     @Test
     void LIC_8() {
-        LIC.RADIUS1 = 20;
+        LIC.RADIUS1 = 10;
         LIC.A_PTS = 2;
         LIC.B_PTS = 2;
         Point[] points = {new Point(3, 3), new Point(6, 3), new Point(6, 6),
                 new Point(9, 3), new Point(9, 4), new Point(13, 1), new Point(13, 4)};
         assertTrue(LIC.LIC_8(points, points.length));
 
-        LIC.RADIUS1 = 21;
+        LIC.RADIUS1 = 11;
         assertFalse(LIC.LIC_8(points, points.length));
     }
 }

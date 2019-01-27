@@ -102,4 +102,18 @@ public class Calculator {
 
     }
 
+    public static int calcQuadrant(Point a) {
+        if(a.x >= 0 && a.y >= 0){
+            return 1;
+        } 
+        if(a.x < 0 && a.y >= 0) {
+            return 2;
+        }
+        if(a.x <= 0 && a.y < 0 ){
+            return 3;
+        }
+        return 4;
+
+    }
+
 }
