@@ -1,6 +1,6 @@
 package main;
 
-public class LIC {
+class LIC {
 
     // machine precision
     private static final double DELTA = 1e-15;
@@ -27,7 +27,7 @@ public class LIC {
     static double RADIUS2;
     static double AREA2;
 
-    public static boolean LIC_0(Point[] points, int numPoints) {
+    static boolean LIC_0(Point[] points, int numPoints) {
 
         // make sure input is correct
         if (LENGTH1 < 0) return false;
@@ -42,7 +42,7 @@ public class LIC {
         return false;
     }
 
-    public static boolean LIC_1(Point[] points, int numPoints) {
+    static boolean LIC_1(Point[] points, int numPoints) {
         // make sure input is correct
         if (RADIUS1 < 0) return false;
 
@@ -62,7 +62,7 @@ public class LIC {
 
 
 
-    public static boolean LIC_3(Point[] points, int numPoints) {
+    static boolean LIC_3(Point[] points, int numPoints) {
         if (AREA1 <= 0) { return false; }
         for (int i = 0; i < numPoints - 2; i++) {
             double triangleArea = Calculator.computeArea(points[i], points[i + 1], points[i + 2]);
@@ -92,7 +92,7 @@ public class LIC {
         return false;
     }
 
-    public static boolean LIC_5(Point[] points, int numPoints) {
+    static boolean LIC_5(Point[] points, int numPoints) {
         for (int i = 0; i < numPoints - 1; i++) {
             if (points[i+1].x - points[i].x < 0) return true;
         }
@@ -128,8 +128,7 @@ public class LIC {
         return false;
     }
 
-
-    public static boolean LIC_7(Point[] points, int numPoints) {
+    static boolean LIC_7(Point[] points, int numPoints) {
 
         if (numPoints < 3 || K_PTS < 1 || K_PTS > numPoints - 2)  return false;
         for(int i = 0; i < numPoints-K_PTS-1; i++){
@@ -138,7 +137,38 @@ public class LIC {
         return false;
     }
 
-    public static boolean LIC_10(Point[] points, int numPoints) {
+    static boolean LIC_8(Point[] points, int numPoints) {
+
+        if(RADIUS1 < 0 ) return false;
+
+        return  setCannotBeContained(points, numPoints, RADIUS1);
+    }
+
+    static boolean LIC_9(Point[] points, int numPoints) {
+        // base case
+        if(numPoints < 5 || C_PTS < 1 || D_PTS < 1 || (C_PTS + D_PTS > numPoints - 3)) {
+            return false;
+        }
+
+        int first = 0;
+        int middle = first + C_PTS + 1;
+        int last = middle + D_PTS + 1;
+
+        while(last < numPoints) {
+            if(!Calculator.areIdentical(points[first], points[middle]) && !Calculator.areIdentical(points[middle], points[last])) {
+                double angle = Calculator.computeAngle(points[first], points[middle], points[last]);
+                if (angle < PI - EPSILON || angle > PI + EPSILON) {
+                    return true;
+                }
+            }
+            ++first;
+            ++middle;
+            ++last;
+        }
+        return false;
+    }
+
+    static boolean LIC_10(Point[] points, int numPoints) {
         if (numPoints < 5 || E_PTS < 1 || F_PTS < 1 || E_PTS + F_PTS > numPoints - 3) {
             return false;
         }
@@ -153,7 +183,7 @@ public class LIC {
 
     }
 
-    public static boolean LIC_11(Point[] points, int numPoints) {
+    static boolean LIC_11(Point[] points, int numPoints) {
         if (numPoints < 3 || G_PTS < 1 || G_PTS > numPoints - 2)  return false;
         for (int i = 0; i < numPoints - G_PTS - 1; i++) {
             if (points[i+G_PTS+1].x - points[i].x < 0) return true;
@@ -161,7 +191,7 @@ public class LIC {
         return false;
     }
 
-    public static boolean LIC_12(Point[] points, int numPoints) {
+    static boolean LIC_12(Point[] points, int numPoints) {
         if(numPoints < 3 || LENGTH2 < 0 || K_PTS < 1 || K_PTS > numPoints - 2) {
             return false;
         }
@@ -186,40 +216,7 @@ public class LIC {
         return false;
     }
 
-    public static boolean LIC_8(Point[] points, int numPoints) {
-
-        if(RADIUS1 < 0 ) return false;
-
-        return  setCannotBeContained(points, numPoints, RADIUS1);
-    }
-
-
-    public static boolean LIC_9(Point[] points, int numPoints) {
-        // base case
-        if(numPoints < 5 || C_PTS < 1 || D_PTS < 1 || (C_PTS + D_PTS > numPoints - 3)) {
-            return false;
-        }
-
-        int first = 0;
-        int middle = first + C_PTS + 1;
-        int last = middle + D_PTS + 1;
-
-        while(last < numPoints) {
-            if(!Calculator.areIdentical(points[first], points[middle]) && !Calculator.areIdentical(points[middle], points[last])) {
-                double angle = Calculator.computeAngle(points[first], points[middle], points[last]);
-                if (angle < PI - EPSILON || angle > PI + EPSILON) {
-                    return true;
-                }
-            }
-            ++first;
-            ++middle;
-            ++last;
-        }
-        return false;
-    }
-
-
-    public static boolean LIC_13(Point[] points, int numPoints) {
+    static boolean LIC_13(Point[] points, int numPoints) {
         // cannot be contained AND can be contained
         if(RADIUS1 < 0 || RADIUS2 <0 ) return false;
 
@@ -229,7 +226,7 @@ public class LIC {
         return false;
     }
 
-    public static boolean LIC_14(Point[] points, int numPoints){
+    static boolean LIC_14(Point[] points, int numPoints){
         if(AREA1 < 0 || AREA2 <0 || E_PTS <1 || F_PTS < 1 || numPoints < 5 || E_PTS + F_PTS > numPoints - 3){
             return  false;
         }

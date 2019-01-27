@@ -2,7 +2,7 @@ package main;
 
 import java.util.Arrays;
 
-public class Main {
+class Main {
     static int dimension = 15;
     static int NOTUSED = 0;
     static int AND = 1;
@@ -79,11 +79,8 @@ public class Main {
 
         }
 
-
         // Launch, FUV doesn't contain any false
         return !Arrays.asList(FUV).contains(false);
-
-
     }
 
 
