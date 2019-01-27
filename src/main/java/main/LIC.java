@@ -140,6 +140,30 @@ public class LIC {
         return false;
     }
 
+    public static boolean LIC_12(Point[] points, int numPoints) {
+        if(numPoints < 3 || LENGTH2 < 0 || K_PTS < 1 || K_PTS > numPoints - 2) {
+            return false;
+        }
+        boolean isGreaterThanLENGTH1 = false;
+        boolean isLessThanLENGTH2 = false;
+        for(int i = 0; i < numPoints - K_PTS - 1; i++) {
+            double distance = Calculator.computeDistance(points[i], points[i + K_PTS + 1]);
+
+            if(distance > LENGTH1) {
+                isGreaterThanLENGTH1 = true;
+            }
+            if(distance < LENGTH2) {
+                isLessThanLENGTH2 = true;
+            }
+
+            if(isGreaterThanLENGTH1 && isLessThanLENGTH2) {
+                return true;
+            }
+
+        }
+
+        return false;
+    }
 
     public static boolean LIC_8(Point[] points, int numPoints) {
 
