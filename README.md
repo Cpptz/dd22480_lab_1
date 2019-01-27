@@ -14,6 +14,8 @@ The last step is to consider which LIC's accualy matter, which is done in the "P
 
 ## Documentation
 ### Plateform and dependencies
+This project uses Java 8 and our dependencies are handled with Maven, see pom.xml. Junit 5 is used for testing.
+
 TODO: speak about maven, junit and java and installation (tools needed to run it)
 
 ### How to run it ?
@@ -23,7 +25,8 @@ terminal command
 
 
 ### Test
-speak about the unit/E2E tests we conducted
+We test every method in Calculator, LIC and Line with unittest. We also made an E2E test for the decide function.
+
 
 ## Contributions
 
@@ -46,4 +49,6 @@ speak about the unit/E2E tests we conducted
 	* Code clean-up
 * Viktor Widin
 	* LIC 4
-	* Readme descriptions
+	* calcQuadrant
+	* Readme
+	* Documentation for Calculator method
