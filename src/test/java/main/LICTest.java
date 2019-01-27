@@ -9,17 +9,20 @@ class LICTest {
     @Test
     void LIC_0() {
         LIC.LENGTH1 =1;
-        
+
         Point a = new Point(0,0);
         Point b = new Point(0,3);
         Point c = new Point(0,0);
 
-        // base case
+        // Only one point when we actually need two
         assertEquals(LIC.LIC_0(new Point[]{a},1),false);
 
+
+        // distance between a and b is larger than 1
         Point[] points = {a,b,c};
         assertEquals(LIC.LIC_0(points,3),true);
 
+        // they are the same point so there is no distance between them
         assertEquals(LIC.LIC_0(new Point[]{a,c} ,2),false);
 
         // wrong input
@@ -31,7 +34,7 @@ class LICTest {
 
     @Test
     void LIC_1() {
-        LIC.RADIUS1 =1.1;
+        LIC.RADIUS1 = 1.1;
 
         Point a = new Point(1,1);
         Point b = new Point(0,0);
@@ -40,25 +43,30 @@ class LICTest {
         Point e = new Point(-2,2);
         Point f = new Point(0.75,0.75);
 
-        // base case
+        // there is only one points when we need three
         assertEquals(LIC.LIC_1(new Point[]{a},1),false);
 
-        // circle cented on (1,0)
+        // circle cented on (1,0) of radius 1 so less than 1.1
         Point[] points = {a,b,c};
         assertEquals(LIC.LIC_1(points,3),false);
 
-        // larger
+        // distance between d and e is larger than  1.1
         Point[] points_2 = {a,d,e};
         assertEquals(LIC.LIC_1(points_2,3),true);
 
-        // same line large
+        /* all points are on the same line and the distance between
+           a and b is larger than 1.1
+         */
         Point[] points_3 = {a,b,d};
         assertEquals(LIC.LIC_1(points_3,3),true);
 
-        // same line small
+        /* all points are on the same line and the distance between
+          them is smaller than 1.1
+         */
         Point[] points_4 = {a,d,f};
         assertEquals(LIC.LIC_1(points_4,3),false);
 
+        // input is invalid
         LIC.RADIUS1 =-1;
         assertEquals(LIC.LIC_1(points,3),false);
 
@@ -85,14 +93,14 @@ class LICTest {
         LIC.EPSILON = 0;
         assertTrue(LIC.LIC_2(points, 3));
 
-        //try with threeee points where the first or last is the same as the vertex
+        //try with three points where the first or last is the same as the vertex
         Point d = new Point(0,0);
         Point e = new Point(1,2);
         Point f = new Point(1,2);
         Point[] newpoints = {d, e, f};
         assertFalse(LIC.LIC_2(newpoints, 3));
     }
-    
+
     @Test
     void LIC_3() {
         LIC.AREA1 = 20;
@@ -131,13 +139,16 @@ class LICTest {
 
         Point[] points = {a,b,c,d,e};
 
+        // 2 points cannot be in more than two different quadrants
         assertEquals(LIC.LIC_4(points,5),false);
 
+        // 3 consecutive points are in different quadrants (a in 1, b in 2, c in 3)
         LIC.Q_PTS = 3;
-
         assertEquals(LIC.LIC_4(points,5),true);
 
+        // (a in 1, b in 2, c in 3, d in 3, e in 2) so there is only three quadrants in our data
         LIC.QUADS = 3;
+        LIC.Q_PTS = 4;
         assertEquals(LIC.LIC_4(points,5),false);
 
 
@@ -286,12 +297,12 @@ class LICTest {
         // if intervening points are < 1
         LIC.E_PTS = 0;
         assertFalse(LIC.LIC_10(points, 6));
-        
+
         // if to many intervening points
         LIC.F_PTS = 2;
         assertFalse(LIC.LIC_10(points, 6));
     }
-    
+
     @Test
     void LIC_11() {
         LIC.G_PTS = 2;
@@ -398,16 +409,20 @@ class LICTest {
         // numPoints too small
         assertFalse(LIC.LIC_14(points, 5));
 
-        // area too small
+        // area of triangle (a,d,f) = 1.5 which is less than 2
         LIC.AREA1 = 2;
         assertFalse(LIC.LIC_14(points, 6));
 
-        // area too large
+        // area of triangle (a,d,f) = 1.5 which is > 1.25
         LIC.AREA1 = 1;
         LIC.AREA2 = 1.25;
         assertFalse(LIC.LIC_14(points, 6));
 
-        //not the same set of points which pass conditions
+        /*
+         not the same set of points which pass conditions
+         area of triangle (a,c,e) = 0.75/2 <0.5
+         area of triangle (b,c,f) = 13.5 > 12
+          */
         LIC.AREA1 = 12;
         LIC.AREA2 = 0.5;
         LIC.E_PTS = 1;
