@@ -2,9 +2,6 @@ package main;
 
 class LIC {
 
-    // machine precision
-    private static final double DELTA = 1e-15;
-
 
     static double PI;
     static double LENGTH1;
@@ -37,7 +34,7 @@ class LIC {
 
         for (int i = 0; i < numPoints - 1; i++) {
             double distance = Calculator.computeDistance(points[i], points[i + 1]);
-            if (distance > LENGTH1 && Math.abs((distance-LENGTH1))> DELTA) return true;
+            if (distance > LENGTH1) return true;
         }
         return false;
     }
@@ -53,7 +50,7 @@ class LIC {
         for (int i = 0; i < numPoints-2; i++) {
             //compute radius of the current point
             double maxDistance = Calculator.computeRadiusTriInCircleFromPoints(points[i], points[i + 1], points[i + 2]);
-            if(maxDistance > RADIUS1 && Math.abs((maxDistance-RADIUS1))> DELTA)
+            if(maxDistance > RADIUS1)
                 return true;
 
         }
@@ -66,7 +63,7 @@ class LIC {
         if (AREA1 <= 0) { return false; }
         for (int i = 0; i < numPoints - 2; i++) {
             double triangleArea = Calculator.computeArea(points[i], points[i + 1], points[i + 2]);
-            if (triangleArea > AREA1 && Math.abs((triangleArea-AREA1))> DELTA) return true;
+            if (triangleArea > AREA1 ) return true;
         }
         return false;
     }
@@ -235,11 +232,11 @@ class LIC {
         boolean isLessThanAREA2 = false;
         for(int i = 0; i < numPoints-E_PTS - F_PTS-2; i++){
             double area = Calculator.computeArea(points[i], points[i + E_PTS + 1], points[i + E_PTS + F_PTS + 2]);
-            if(area > AREA1 && Math.abs((area- AREA1))> DELTA)
+            if(area > AREA1 )
             {
                 isGreaterThanAREA1 = true;
             }
-            if(area < AREA2 && Math.abs((area- AREA1))> DELTA)
+            if(area < AREA2 )
             {
                 isLessThanAREA2 = true;
             }

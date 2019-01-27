@@ -31,7 +31,7 @@ class LICTest {
 
     @Test
     void LIC_1() {
-        LIC.RADIUS1 =1;
+        LIC.RADIUS1 =1.1;
 
         Point a = new Point(1,1);
         Point b = new Point(0,0);
