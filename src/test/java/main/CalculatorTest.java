@@ -80,9 +80,9 @@ class CalculatorTest {
         Point c = new Point(-1, 0);
         Point d = new Point(1, -1);
 
-        asserEquals(Calculator.calcQuadrant(a), 1);
-        asserEquals(Calculator.calcQuadrant(b), 3);
-        asserEquals(Calculator.calcQuadrant(c), 2);
-        asserEquals(Calculator.calcQuadrant(d), 4);
+        assertEquals(Calculator.calcQuadrant(a), 1);
+        assertEquals(Calculator.calcQuadrant(b), 3);
+        assertEquals(Calculator.calcQuadrant(c), 2);
+        assertEquals(Calculator.calcQuadrant(d), 4);
     }
 }
