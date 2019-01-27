@@ -65,10 +65,10 @@ public class Calculator {
 
     /**
      *
-     * @param side_a
-     * @param side_b
-     * @param side_c
-     * @return Calculate the radius needed of a circle to envelop a triangle. (Use for lic#8)
+     * @param a
+     * @param b
+     * @param c
+     * @return alculate the radius needed of a circle to envelop a triangle. (Use for lic#8)
      * or max pairwise distance if they are on the same line
      */
     public static double computeRadiusTriInCircleFromPoints(Point a, Point b, Point c){
