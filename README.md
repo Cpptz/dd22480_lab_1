@@ -31,3 +31,12 @@ speak about the unit/E2E tests we conducted
     * computeAngle()
     * computeRadiusTriInCircleFromPoints()
     * PR merger
+
+* Sara Ersson
+	* LIC 6
+	* LIC 8
+	* LIC 9
+	* LIC 13
+	* Line class
+	* areIdentical()
+	* Code clean-up
