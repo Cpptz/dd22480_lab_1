@@ -3,7 +3,7 @@ package main;
 
 // add different functions for calculating stuff which is needed for the different condition checks
 
-public class Calculator {
+class Calculator {
 
 
 
@@ -14,19 +14,19 @@ public class Calculator {
      * @param c
      * @return return angle in [0;pi]
      */
-    public static double computeAngle(Point a, Point b, Point c){
+    static double computeAngle(Point a, Point b, Point c){
         double scalarProduct = (a.x - b.x)*(c.x- b.x)+(a.y-b.y)*(c.y -b.y);
         double productOfNorms = computeDistance(a,b)*computeDistance(b,c);
         return Math.acos(scalarProduct/productOfNorms);
     }
 
     // calc area
-    public static double computeArea(Point a, Point b, Point c) {
+    static double computeArea(Point a, Point b, Point c) {
         return Math.abs((a.x * (b.y - c.y) + b.x * (c.y - a.y) + c.x * (a.y - b.y)) / 2);
         // quadrant
     }
     // distance
-    public static double computeDistance(Point a, Point b){
+    static double computeDistance(Point a, Point b){
         return Math.sqrt(Math.pow((a.x-b.x),2)+Math.pow(a.y-b.y,2));
     }
 
@@ -62,7 +62,7 @@ public class Calculator {
 
     // Calculate the radius needed of a circle to envelop a triangle. (Use for lic#8)
     // https://en.wikipedia.org/wiki/Circumscribed_circle#Triangle_centers_on_the_circumcircle_of_triangle_ABC
-    public static double computeRadiusTriInCircle(double side_a, double side_b, double side_c){
+    static double computeRadiusTriInCircle(double side_a, double side_b, double side_c){
         return ((side_a*side_b*side_c)/(Math.sqrt((side_a + side_b + side_c)*(side_b + side_c - side_a)*(side_c + side_a - side_b)*(side_a + side_b - side_c))));
     }
 
@@ -75,7 +75,7 @@ public class Calculator {
      * @return Calculate the radius needed of a circle to envelop a triangle. (Use for lic#8)
      * or max pairwise distance if they are on the same line
      */
-    public static double computeRadiusTriInCircleFromPoints(Point a, Point b, Point c){
+    static double computeRadiusTriInCircleFromPoints(Point a, Point b, Point c){
 
         // all points are on the same line
         if(computeArea(a,b,c)==0){
@@ -102,7 +102,7 @@ public class Calculator {
 
     }
 
-    public static int calcQuadrant(Point a) {
+    static int calcQuadrant(Point a) {
         if(a.x >= 0 && a.y >= 0){
             return 1;
         } 
