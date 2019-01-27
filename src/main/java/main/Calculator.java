@@ -99,9 +99,7 @@ public class Calculator {
             return 3;
         }
         return 4;
-        //if(a.x > 0 || a.y < 0 ){
-        //    return 4;
-        //}
+
     }
 
 }

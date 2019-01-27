@@ -73,11 +73,11 @@ public class LIC {
 
     static boolean LIC_4(Point[] points, int numPoints){
         //check the initial input
-        if(numPoints < 2 || Q_PTS < 2 || QUADS < 1 || QUADS > 3) {
+        if(numPoints < 2 || Q_PTS < 2 || Q_PTS > numPoints || QUADS < 1 || QUADS > 3) {
             return false;
         }
         // Loop through the points and for each point, loop through the consecutive points. This is ineffective.
-        for(int i = 0; i < numPoints - Q_PTS; i++){
+        for(int i = 0; i < numPoints - (Q_PTS-1); i++){
             int quadsArray[] = {0,0,0,0};
             for(int j= 0; j < Q_PTS; j++){
                 int tempQuad = Calculator.calcQuadrant(points[i+j]);

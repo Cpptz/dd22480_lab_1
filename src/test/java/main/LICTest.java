@@ -95,9 +95,9 @@ class LICTest {
     @Test
     void LIC_4() {
         LIC.QUADS = 2;
-        LIC.Q_PTS = 3;
+        LIC.Q_PTS = 2;
         Point a = new Point(0,0);
-        Point b = new Point(4,3);
+        Point b = new Point(-4,3);
         Point c = new Point(-2,-3);
         Point d = new Point(0,-3);
         Point e = new Point(-3,3);
@@ -106,9 +106,13 @@ class LICTest {
 
         assertEquals(LIC.LIC_4(points,5),false);
 
-        LIC.Q_PTS = 4;
+        LIC.Q_PTS = 3;
 
         assertEquals(LIC.LIC_4(points,5),true);
+
+        LIC.QUADS = 3;
+        assertEquals(LIC.LIC_4(points,5),false);
+
 
     }
 
