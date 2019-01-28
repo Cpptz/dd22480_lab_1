@@ -116,9 +116,9 @@ class Calculator {
      */
     static double computeRadiusTriInCircleFromPoints(Point a, Point b, Point c){
 
-        // all points are on the same line
+        // all points are on the same line or one is the same as another
         if(computeArea(a,b,c)==0){
-            double maxDistance =  Math.max(Math.max(computeDistance(a,b),computeDistance(a,c)), computeDistance(b,c));
+            double maxDistance =  Math.max(Math.max(computeDistance(a,b),computeDistance(a,c)), computeDistance(b,c))/2;
             return maxDistance;
         }
 
@@ -128,7 +128,7 @@ class Calculator {
         double angle3 = computeAngle(b,a,c);
 
         if(angle1 > Math.PI/2 || angle2 > Math.PI/2 || angle3 > Math.PI/2)
-            return Math.max(Math.max(computeDistance(a,b),computeDistance(a,c)), computeDistance(b,c));
+            return Math.max(Math.max(computeDistance(a,b),computeDistance(a,c)), computeDistance(b,c))/2;
 
         else{
             // compute radius of the circumcircle of triangle ABC
@@ -142,14 +142,14 @@ class Calculator {
     }
 
     /**
-     * 
+     *
      * @param a
      * @return the quadrant in which the point is
      */
     static int calcQuadrant(Point a) {
         if(a.x >= 0 && a.y >= 0){
             return 1;
-        } 
+        }
         if(a.x < 0 && a.y >= 0) {
             return 2;
         }
