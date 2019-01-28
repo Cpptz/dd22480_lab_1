@@ -26,7 +26,7 @@ Our dependencies are handled with *Maven*, see [pom.xml](pom.xml).
 We have one main dependency: [Junit 5](https://junit.org/junit5/) 
 
 ### Specification
-All LIC functions are described in decide.pdf in section 2.1. For example is LIC_4() described under point 4.
+All LIC functions are described in [decide.pdf](decide.pdf) in section 2.1. For example is LIC_4() described under point 4.
 
 ### Test
 We have written unit tests for methods of:
