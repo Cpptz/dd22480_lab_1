@@ -54,10 +54,16 @@ class Calculator {
             return 0;
         }
 
-        // if k == 0 (cannot divide with 0)
+        // if k == 0 (cannot divide with 0) (it is an horizontal line)
         if(line.k == 0) {
-            return current.y - line.m;
+            return Math.abs(current.y - line.m);
         }
+
+        // if it is vertical line
+        if(line.isVerticalLine()){
+            return Math.abs(line.getHorizontalOffset() - current.x);
+        }
+
 
         // otherwise obtain orthogonal line and calculate distance
         double newK = -1/line.k;

@@ -10,12 +10,34 @@ class CalculatorTest {
 
     @Test
     void distToLine(){
-        Line line = new Line(new Point(2,4), new Point(5, 3));
-        Point p = new Point(5, 2);
+        Line line = new Line(new Point(0,0), new Point(2, 2));
+        Point p = new Point(-2, 2);
 
-        double dist = 1;
+        // distance between the line and the point is equal analytically to 2*Math.sqrt(2)
+        assertEquals(Calculator.distToLine(line, p), 2*Math.sqrt(2),DELTA);
 
-        assertEquals(Calculator.distToLine(line, p), 3*Math.sqrt(10)/10,DELTA);
+        // opposite point, distance should also be the same, 2*Math.sqrt(2)
+        p = new Point(2, -2);
+        assertEquals(Calculator.distToLine(line, p), 2*Math.sqrt(2),DELTA);
+
+        // distance between vertical line and point should be 5
+        Line line_1 = new Line(new Point(0,0), new Point(0, 5));
+        Point p_1 = new Point(5, 0);
+        assertEquals(Calculator.distToLine(line_1, p_1), 5,DELTA);
+        // opposite point, distance should be the same, 5
+        p_1 = new Point(-5, 0);
+        assertEquals(Calculator.distToLine(line_1, p_1), 5,DELTA);
+
+
+        // distance between horizontal line and point should be 5
+        line_1 = new Line(new Point(0,0), new Point(5, 0));
+        p_1 = new Point(0, 5);
+        assertEquals(Calculator.distToLine(line_1, p_1), 5,DELTA);
+        // opposite point, distance should be the same, 5
+        p_1 = new Point(0, -5);
+        assertEquals(Calculator.distToLine(line_1, p_1), 5,DELTA);
+
+
     }
 
     @Test

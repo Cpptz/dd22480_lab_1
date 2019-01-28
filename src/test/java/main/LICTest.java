@@ -124,11 +124,11 @@ class LICTest {
 
         Point[] newpoints = {a,b,c,d,e,f,g};
 
-        // Area of triangle e,f,g is 200 which is bigger than
+        // Area of triangle e,f,g is 200 which is bigger than 20 so it should return true
         assertEquals(LIC.LIC_3(newpoints,7),true);
 
+        // AREA should be >= 0 so it should return false
         LIC.AREA1 = -1;
-
         assertEquals(LIC.LIC_3(newpoints,7),false);
     }
 
@@ -144,14 +144,15 @@ class LICTest {
 
         Point[] points = {a,b,c,d,e};
 
-        // 2 points cannot be in more than two different quadrants
+        // 2 points cannot be in more than two different quadrants so it should return false
         assertEquals(LIC.LIC_4(points,5),false);
 
-        // 3 consecutive points are in different quadrants (a in 1, b in 2, c in 3)
+        // 3 consecutive points are in different quadrants (a in 1, b in 2, c in 3) so it should return true
         LIC.Q_PTS = 3;
         assertEquals(LIC.LIC_4(points,5),true);
 
         // (a in 1, b in 2, c in 3, d in 3, e in 2) so there is only three quadrants in our data
+        // so not > 3 so it should return false
         LIC.QUADS = 3;
         LIC.Q_PTS = 4;
         assertEquals(LIC.LIC_4(points,5),false);
@@ -170,8 +171,10 @@ class LICTest {
 
         Point[] points = {a,b,c,d,e,f};
 
+        // for points a,b,c all x values are in increasing so it should return false
         assertFalse(LIC.LIC_5(points,3));
 
+        // e.x  < d.x so it should return true
         assertTrue(LIC.LIC_5(points,6));
     }
 
@@ -181,17 +184,31 @@ class LICTest {
         LIC.N_PTS = 4;
         Point[] points = {
                 new Point(3, 3),
-                new Point(6, 3),
-                new Point(6, 6),
-                new Point(9, 6),
-                new Point(12, 3),
-                new Point(15, 8)};
-        // should pass since there are distances fulfilling the requirements that are larger than DIST
-        assertTrue(LIC.LIC_6(points,6));
+                new Point(0, 0),
+                new Point(-3, 3),
+                new Point(9, 9)};
+
+        // third point is at distance 3*sqrt(2) from the line defined by the first and the fourth point
+        // so it should return true
+        assertTrue(LIC.LIC_6(points,4));
 
         // should fail since there are no distances fulfilling the requirements that are larger than DIST
         LIC.DIST = 10;
-        assertFalse(LIC.LIC_6(points,6));
+        assertFalse(LIC.LIC_6(points,4));
+
+        // first and last point are the same so we have a coincident point
+        // distance between third point and this coincident is larger than 10
+        Point[] points_1 = {
+                new Point(0, 0),
+                new Point(10, 0),
+                new Point(0, 11),
+                new Point(0, 0)};
+        assertTrue(LIC.LIC_6(points_1,4));
+
+
+
+
+
     }
 
     @Test
