@@ -10,7 +10,7 @@ The program takes input in the form of hypothetical radar data and generates a b
 
 There are 15 LICs, and DECIDE() evaluates them all and assignes the 15 corresponding boolean values to a "Conditions Met Vector" (CMV). The "Locigal Connector Matrix" (LCM) defines which LICs must be evaluated jointly. What conditions have been met (CMV) and how the conditions relate to each other (LCM), is combined and stored in the "Preliminary Unlocking Matrix" (PUM). 
 
-The last step is to consider which LIC's acctually matter, which is done in the "Preliminary Unlocking Vector"(PUV). The elements in the PUV indicate how to combine elements in the PUM to form the "Final Unlocking Vector"(FUV). If all values of the FUV are true, it is allowed to fire an anti-ballistic missile.
+The last step is to consider which LICs actually matter, which is done in the "Preliminary Unlocking Vector"(PUV). The elements in the PUV indicate how to combine elements in the PUM to form the "Final Unlocking Vector"(FUV). If all values of the FUV are true, it is allowed to fire an anti-ballistic missile.
 
 ## Documentation
 ### Platform and dependencies
