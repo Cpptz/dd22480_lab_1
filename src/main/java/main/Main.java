@@ -10,8 +10,8 @@ class Main {
 
     // inputs to decide
     static boolean[] PUV;
-    static int NUM_POINTS;
     static Point[] POINTS;
+    static int NUM_POINTS = 100;
     static int[][] LCM;
     // + the ones in LIC
 
@@ -29,21 +29,21 @@ class Main {
      * @return
      */
     public static boolean decide() {
-         CMV[0] = LIC.LIC_0(POINTS, NUM_POINTS);
-         CMV[1] = LIC.LIC_1(POINTS, NUM_POINTS);
-//         CMV[2] = LIC.LIC_2(POINTS, NUM_POINTS);
-         CMV[3] = LIC.LIC_3(POINTS, NUM_POINTS);
-//         CMV[4] = LIC.LIC_4(POINTS, NUM_POINTS);
-         CMV[5] = LIC.LIC_5(POINTS, NUM_POINTS);
-         CMV[6] = LIC.LIC_6(POINTS, NUM_POINTS);
-         CMV[7] = LIC.LIC_7(POINTS, NUM_POINTS);
-         CMV[8] = LIC.LIC_8(POINTS, NUM_POINTS);
-//         CMV[9] = LIC.LIC_9(POINTS, NUM_POINTS);
-         CMV[10] = LIC.LIC_10(POINTS, NUM_POINTS);
-         CMV[11] = LIC.LIC_11(POINTS, NUM_POINTS);
-//         CMV[12] = LIC.LIC_12(POINTS, NUM_POINTS);
-         CMV[13] = LIC.LIC_13(POINTS, NUM_POINTS);
-         CMV[14] = LIC.LIC_14(POINTS, NUM_POINTS);
+        CMV[0] = LIC.LIC_0(POINTS, NUM_POINTS);
+        CMV[1] = LIC.LIC_1(POINTS, NUM_POINTS);
+        CMV[2] = LIC.LIC_2(POINTS, NUM_POINTS);
+        CMV[3] = LIC.LIC_3(POINTS, NUM_POINTS);
+        CMV[4] = LIC.LIC_4(POINTS, NUM_POINTS);
+        CMV[5] = LIC.LIC_5(POINTS, NUM_POINTS);
+        CMV[6] = LIC.LIC_6(POINTS, NUM_POINTS);
+        CMV[7] = LIC.LIC_7(POINTS, NUM_POINTS);
+        CMV[8] = LIC.LIC_8(POINTS, NUM_POINTS);
+        CMV[9] = LIC.LIC_9(POINTS, NUM_POINTS);
+        CMV[10] = LIC.LIC_10(POINTS, NUM_POINTS);
+        CMV[11] = LIC.LIC_11(POINTS, NUM_POINTS);
+        CMV[12] = LIC.LIC_12(POINTS, NUM_POINTS);
+        CMV[13] = LIC.LIC_13(POINTS, NUM_POINTS);
+        CMV[14] = LIC.LIC_14(POINTS, NUM_POINTS);
 
 
         // CMV + LCM => PUM
@@ -80,9 +80,18 @@ class Main {
         }
 
         // Launch, FUV doesn't contain any false
-        return !Arrays.asList(FUV).contains(false);
-    }
 
+        for (int i = 0; i < 15; i++) {
+            if (FUV[i] == false) {
+                return false;
+            }
+
+
+            //boolean value = !Arrays.asList(FUV).contains(false);
+            //return !Arrays.asList(FUV).contains(false);
+        }
+        return true;
+    }
 
     public static void main(String[] args) {
 
