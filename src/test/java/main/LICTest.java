@@ -268,25 +268,23 @@ class LICTest {
 
     @Test
     void LIC_9() {
-        LIC.PI = 3.1415926535;
-        LIC.EPSILON = 0.05;
+        LIC.PI = Math.PI;
+        LIC.EPSILON = Math.PI/6;
         LIC.C_PTS = 1;
         LIC.D_PTS = 1;
 
         Point[] points = {
-                new Point(0,1),
-                new Point(0.5,Math.sqrt(3)/2),
+                // all points are on the trigonometric circle
+                new Point(Math.cos(Math.PI/3),Math.sin(Math.PI/3)),
                 new Point(1,0),
-                new Point(0.5,-Math.sqrt(3)/2),
+                new Point(0,0),
                 new Point(0, -1),
-                new Point(-0.4, -Math.sqrt(0.84)),
-                new Point(-1,0),
-                new Point(-0.4, Math.sqrt(0.84))};
+                new Point(Math.cos(-Math.PI/3), Math.sin(-Math.PI/3))};
 
-        // should pass since there is an angle > PI - EPSILON
+        // should pass since angle between first, third and last point is 2pi/3 < PI- PI/6
         assertTrue(LIC.LIC_9(points, points.length));
 
-        // should fail since there is no angle < PI - EPSILON nor an angle > PI + EPSILON
+        // should pass since angle between first, third and last point is 2pi/3 < PI- PI/2
         LIC.EPSILON = 1.8;
         assertFalse(LIC.LIC_9(points, points.length));
     }
@@ -306,12 +304,14 @@ class LICTest {
         Point f = new Point(3,0);
         Point[] points = {a, b, c, d, e, f};
 
+        // Area of triangle a, d, f is 3 which is > 1 (AREA1) so it should return true
         assertTrue(LIC.LIC_10(points, 6));
 
-        // if numPoints is to small
+        // if numPoints is to small, should return false
         assertFalse(LIC.LIC_10(points, 5));
 
         // if the area is to small
+        // Area of triangle a, d,f is 3 which is < 15 (AREA1) so it should return false
         LIC.AREA1 = 15;
         assertFalse(LIC.LIC_10(points, 6));
 
@@ -319,7 +319,7 @@ class LICTest {
         LIC.E_PTS = 0;
         assertFalse(LIC.LIC_10(points, 6));
 
-        // if to many intervening points
+        // if too many intervening points
         LIC.F_PTS = 2;
         assertFalse(LIC.LIC_10(points, 6));
     }
@@ -337,9 +337,11 @@ class LICTest {
         Point[] points = {a,b,c,d,e,f};
 
         // No consecutive points where x[j] - x[i] < 0 where j is i + G_PTS + 1
-        assertFalse(LIC.LIC_11(points,3));
+        // so it should return false
+        assertFalse(LIC.LIC_11(points,4));
 
         // Point c - point f would be -3 and thus < 0
+        // so it should return true
         assertTrue(LIC.LIC_11(points,6));
 
         // this should fail since G_PTS are less than 1
@@ -373,6 +375,7 @@ class LICTest {
         assertFalse(LIC.LIC_12(points, 3));
 
         //Should be true since distance is greater than LENGTH1 and less than LENGTH2
+        // for points (c,f) for example where distance is sqrt(26)>5
         assertTrue(LIC.LIC_12(points, 6));
 
         LIC.K_PTS = 0;
@@ -384,8 +387,8 @@ class LICTest {
         assertFalse(LIC.LIC_12(points, 6));
 
         LIC.K_PTS = 2;
-        LIC.LENGTH2 = 2;
-        //Should fail since distance is greater than LENGTH2
+        LIC.LENGTH2 = 0.5;
+        //Should fail since all distance is greater than LENGTH2
         assertFalse(LIC.LIC_12(points,6));
     }
 
@@ -434,11 +437,11 @@ class LICTest {
         // numPoints too small
         assertFalse(LIC.LIC_14(points, 5));
 
-        // area of triangle (a,d,f) = 1.5 which is less than 2
+        // area of triangle (a,d,f) = 1.5 which is less than 2 so it should return false
         LIC.AREA1 = 2;
         assertFalse(LIC.LIC_14(points, 6));
 
-        // area of triangle (a,d,f) = 1.5 which is > 1.25
+        // area of triangle (a,d,f) = 1.5 which is > 1.25 so it should return false
         LIC.AREA1 = 1;
         LIC.AREA2 = 1.25;
         assertFalse(LIC.LIC_14(points, 6));
