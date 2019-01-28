@@ -14,22 +14,50 @@ The last step is to consider which LIC's acctually matter, which is done in the 
 
 ## Documentation
 ### Platform and dependencies
-This project uses Java 8 and our dependencies are handled with Maven, see pom.xml. Junit 5 is used for testing.
+This project uses *Java 8*.
+On Debian-based systems, you could use the following two command lines to install the *JRE* and the *JDK*.
+```bash
+sudo apt install openjdk-8-jdk
+sudo apt install openjdk-8-jdk
+```
+Our dependencies are handled with *Maven*, see [pom.xml](pom.xml). 
 
-TODO: speak about maven, junit and java and installation (tools needed to run it)
+
+We have one main dependency: [Junit 5](https://junit.org/junit5/) 
+
 
 ### How to run it ?
+#### Terminal
+On Debian-based systems, you could use the following  command line to install *Maven*.
+```bash
+sudo apt install maven
+```
+Then at the root folder, you can launch all tests by running
+```bash
+mvn test -B
+```
 
-IDE 
-terminal command
+#### IDE
+Most of use *Intellij*.  
 
+You just have to import the project and select the file you want to run by right clicking 
+on it on the folder view on the left of the window.
+
+You can also use the built-in maven tool on the right of the window to run all tests.
 
 ### Test
-We test every method in Calculator, LIC and Line with unittest. An E2E test has also been made for the DECIDE function.
+We have written unit tests for methods of:
+* [Calculator.java](src/main/java/main/Calculator.java) in [CalculatorTest.java](src/test/java/main/CalculatorTest.java)
+* [LIC.java](src/main/java/main/LIC.java) in [LICTest.java](src/test/java/main/LICTest.java)
 
+and also end to end tests for the ``decide()`` of [Main.java](src/main/java/main/Main.java) 
+in [MainTest.java](src/test/java/main/MainTest.java) 
 
 ## Contributions
 
+All of us agreed on a [guide](CONTRIBUTING.md) for contribution
+
+This is what we have achieved 
 * Cyril Pottiez
     * Set up of CI
     * LIC 0
@@ -51,8 +79,8 @@ We test every method in Calculator, LIC and Line with unittest. An E2E test has 
 	
 * Viktor Widin
 	* LIC 4
-	* calcQuadrant
-	* Readme
+	* calcQuadrant()
+	* README
 	* Documentation for Calculator method
 
 * Robin Gunning
@@ -60,4 +88,4 @@ We test every method in Calculator, LIC and Line with unittest. An E2E test has 
     * LIC 5
     * LIC 7
     * LIC 11
-    * calculateArea
+    * calculateArea()
