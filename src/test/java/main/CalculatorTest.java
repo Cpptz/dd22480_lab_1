@@ -56,7 +56,7 @@ class CalculatorTest {
         Point b = new Point(2, 4);
         Point c = new Point(4, 8);
 
-        assertEquals(Calculator.computeRadiusTriInCircleFromPoints(a,b,c), Math.sqrt(45),DELTA);
+        assertEquals(Calculator.computeRadiusTriInCircleFromPoints(a,b,c), Math.sqrt(45)/2,DELTA);
 
         a = new Point(0, 2);
         b = new Point(-2, 0);
@@ -67,7 +67,7 @@ class CalculatorTest {
         b = new Point(0, 0.75);
         c = new Point(5, 0);
 
-        assertEquals(Calculator.computeRadiusTriInCircleFromPoints(a,b,c), 10.0, DELTA);
+        assertEquals(Calculator.computeRadiusTriInCircleFromPoints(a,b,c), 5.0, DELTA);
     }
 
     @Test
