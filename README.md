@@ -91,3 +91,8 @@ This is what we have achieved
     * LIC 7
     * LIC 11
     * calculateArea()
+    
+* Fredrik Norrman
+	* LIC 2
+	* LIC 10
+	* LIC 12
