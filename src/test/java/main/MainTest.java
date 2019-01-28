@@ -55,6 +55,89 @@ class MainTest {
                 new Point(1.45,-8.43),
                 new Point(-4.28,8.60),
                 new Point(7.96,6.53),
+                new Point(1.45,-8.43),
+                new Point(-4.28,8.60),
+                new Point(7.96,6.53),
+                new Point(8.65,-1.21),
+                new Point(8.88,-2.33),
+                new Point(-7.02,0.71),
+                new Point(-4.40,-9.63),
+                new Point(8.10,-9.92),
+                new Point(8.31,-9.74),
+                new Point(-0.42,1.65),
+                new Point(1.87,-3.23),
+                new Point(-6.01,-4.24),
+                new Point(8.79,-3.73),
+                new Point(2.57,8.89),
+                new Point(-5.98,4.66),
+                new Point(8.30,3.23),
+                new Point(-2.93,2.66),
+                new Point(1.45,-8.43),
+                new Point(-4.28,8.60),
+                new Point(7.96,6.53),
+                new Point(1.45,-8.43),
+                new Point(-4.28,8.60),
+                new Point(7.96,6.53),
+                new Point(8.65,-1.21),
+                new Point(8.88,-2.33),
+                new Point(-7.02,0.71),
+                new Point(-4.40,-9.63),
+                new Point(8.10,-9.92),
+                new Point(8.31,-9.74),
+                new Point(-0.42,1.65),
+                new Point(1.87,-3.23),
+                new Point(-6.01,-4.24),
+                new Point(8.79,-3.73),
+                new Point(2.57,8.89),
+                new Point(-5.98,4.66),
+                new Point(8.30,3.23),
+                new Point(-2.93,2.66),
+                new Point(1.45,-8.43),
+                new Point(-4.28,8.60),
+                new Point(7.96,6.53),
+                new Point(1.45,-8.43),
+                new Point(-4.28,8.60),
+                new Point(7.96,6.53),
+                new Point(8.65,-1.21),
+                new Point(8.88,-2.33),
+                new Point(-7.02,0.71),
+                new Point(-4.40,-9.63),
+                new Point(8.10,-9.92),
+                new Point(8.31,-9.74),
+                new Point(-0.42,1.65),
+                new Point(1.87,-3.23),
+                new Point(-6.01,-4.24),
+                new Point(8.79,-3.73),
+                new Point(2.57,8.89),
+                new Point(-5.98,4.66),
+                new Point(8.30,3.23),
+                new Point(-2.93,2.66),
+                new Point(1.45,-8.43),
+                new Point(-4.28,8.60),
+                new Point(7.96,6.53),
+                new Point(1.45,-8.43),
+                new Point(-4.28,8.60),
+                new Point(7.96,6.53),
+                new Point(8.65,-1.21),
+                new Point(8.88,-2.33),
+                new Point(-7.02,0.71),
+                new Point(-4.40,-9.63),
+                new Point(8.10,-9.92),
+                new Point(8.31,-9.74),
+                new Point(-0.42,1.65),
+                new Point(1.87,-3.23),
+                new Point(-6.01,-4.24),
+                new Point(8.79,-3.73),
+                new Point(2.57,8.89),
+                new Point(-5.98,4.66),
+                new Point(8.30,3.23),
+                new Point(-2.93,2.66),
+                new Point(1.45,-8.43),
+                new Point(-4.28,8.60),
+                new Point(7.96,6.53),
+                new Point(1.45,-8.43),
+                new Point(-4.28,8.60),
+                new Point(7.96,6.53),
         };
         Main.LCM = new int[][]
                 {
@@ -98,7 +181,8 @@ class MainTest {
 
     }
 
-    //trivial
+    //trivial due to only one puv being active, making only lic8 matter using points 26, 28 and 30 satisfies the
+    // condition for lic 8 which means pum[8,0...14] is true except [8,8] which will make fuv8 true.
     @Test
     void endToEnd2() {
         LIC.LENGTH1 = 4.174158799179775;
@@ -254,161 +338,5 @@ class MainTest {
 
     }
 
-    // non trivial
-    @Test
-    void endToEnd3() {
-        LIC.LENGTH1 = 1.240856201826821;
-        LIC.RADIUS1 = 4.390333392734221;
-        LIC.EPSILON = 1.1467062234301022;
-        LIC.AREA1 = 3.618270456529948;
-        LIC.Q_PTS = 2;
-        LIC.QUADS = 1;
-        LIC.DIST = 2.9960825843342995;
-        LIC.N_PTS = 3;
-        LIC.K_PTS = 1;
-        LIC.A_PTS = 2;
-        LIC.B_PTS = 2;
-        LIC.C_PTS = 1;
-        LIC.D_PTS = 2;
-        LIC.E_PTS = 3;
-        LIC.F_PTS = 4;
-        LIC.G_PTS = 3;
-        LIC.LENGTH2 = 3.59789303508143;
-        LIC.RADIUS2 = 2.53146413667152;
-        LIC.AREA2 = 4.624283353098858;
-
-        Main.PUV = new boolean[]{false, true, true, false, false, false, true, false, true, true, false, false, true, false, true};
-
-
-        Main.POINTS = new Point[]{
-                new Point(71.58151580366189, 80.60666242190436),
-                new Point(-42.216639009837145, -11.369165576244995),
-                new Point(-92.60044298031637, 98.59971146819518),
-                new Point(-8.400959690913126, -93.56369488983438),
-                new Point(-37.92902093818664, -48.000840004664205),
-                new Point(45.681500615500056, -15.120396331659933),
-                new Point(-70.60258211121224, 21.54932296415339),
-                new Point(-84.92240613142319, 52.49401234461516),
-                new Point(-72.60171978327449, 64.38273721366852),
-                new Point(-41.69499941285726, -7.1563605681500775),
-                new Point(-67.25267683126263, 40.60232923532922),
-                new Point(66.24275318765311, -89.74659454102694),
-                new Point(-42.3455365488959, -59.95329007937724),
-                new Point(-65.80315923096818, 93.89448793653804),
-                new Point(-87.27631305371628, -84.39075397899333),
-                new Point(64.95348419179746, -16.816057723323908),
-                new Point(-3.0296707304783013, 70.71773065839139),
-                new Point(-38.814689492276685, 9.49274785129785),
-                new Point(99.75956624663243, 13.331193421710253),
-                new Point(77.96245069207583, -72.33594779435947),
-                new Point(32.821776983828215, -80.73712680571191),
-                new Point(-84.91659458197867, 64.31152779435769),
-                new Point(33.57516720215287, -14.889215415758116),
-                new Point(-92.37458545472744, 19.999997219668415),
-                new Point(-1.3156455470946753, 88.58782122834847),
-                new Point(43.301408781499276, -90.79795465745461),
-                new Point(61.67817954732914, 11.424319622339652),
-                new Point(95.79013585730368, 10.970522429496029),
-                new Point(-52.28427108921978, -88.34347057214507),
-                new Point(62.65706795898197, 82.72819943457128),
-                new Point(82.84341967288361, -66.51267061415744),
-                new Point(78.90455575569476, 11.424261461072916),
-                new Point(-1.4110673039956936, 13.963242833131858),
-                new Point(-73.53811399346912, -73.54262594367327),
-                new Point(-65.52019431186409, 29.432989996146915),
-                new Point(-60.84312345962979, -93.80079622759656),
-                new Point(-94.0672093263702, 10.119227843365294),
-                new Point(-59.31580947374553, -90.9457041067532),
-                new Point(-15.005671191488773, 29.48205497539709),
-                new Point(-99.71971154605079, 99.63304813128832),
-                new Point(28.176739923289688, -71.05325323005309),
-                new Point(40.05962166000427, 59.314656853338136),
-                new Point(11.333103933656048, 41.68913304773173),
-                new Point(96.2242528162499, -15.489659400392199),
-                new Point(-65.81558933712623, -38.43956548614964),
-                new Point(-49.394564218260406, 79.31584295412114),
-                new Point(14.190145692323014, 91.60944102408388),
-                new Point(53.74494173600007, -19.3545778873752),
-                new Point(-67.405764558875, -0.5337631680972095),
-                new Point(-51.78720963648769, -84.00291683527303),
-                new Point(-90.27095393679903, -39.17859809175821),
-                new Point(-54.96935688597271, 38.986591615401466),
-                new Point(5.215549121938295, 51.73913283780013),
-                new Point(48.84144225499506, -33.79137438990473),
-                new Point(83.27338326930766, -32.877399243637655),
-                new Point(55.86407106030481, 4.39154410726654),
-                new Point(-96.63390067504758, 95.65815843401484),
-                new Point(-55.294165753596644, -10.722194225128305),
-                new Point(28.978859410579332, 78.00298128251353),
-                new Point(-15.438040982265292, 80.88884296082941),
-                new Point(97.43639336415262, -6.791676678404073),
-                new Point(35.946282455972295, -34.130179931467225),
-                new Point(-79.15863208071352, 17.906204419095076),
-                new Point(67.37161653106708, -49.03662824319579),
-                new Point(-47.624691160569, 4.483334705350899),
-                new Point(-6.0795636230403005, -4.736071721209825),
-                new Point(-67.36615373796567, -5.6362593483831205),
-                new Point(-58.934204861381986, -71.19261841420035),
-                new Point(-55.833390261894486, -37.624133811214186),
-                new Point(24.806766002093156, 9.758596442659865),
-                new Point(96.70767837450873, -60.88983027610011),
-                new Point(-29.00688871234884, -79.00063830313908),
-                new Point(-15.2684966039089, 86.5505772693358),
-                new Point(-55.21111260925296, 99.28163728085602),
-                new Point(-81.97501637126294, 61.32295586336386),
-                new Point(-72.01110810125414, 59.84897908075661),
-                new Point(-57.39920057741155, 4.254847315006344),
-                new Point(18.406858979619884, 19.202733871200635),
-                new Point(56.08923699826573, -93.07950876498343),
-                new Point(-73.45469940141425, -36.121908986549876),
-                new Point(-35.55978015992336, -64.02109811965778),
-                new Point(26.423267673407807, 58.006397748335814),
-                new Point(11.449613109772287, -35.06401977726179),
-                new Point(73.78447735338577, 74.40932676439365),
-                new Point(-9.344373175232718, -99.83907410773585),
-                new Point(-58.00822290396732, 82.87416431604308),
-                new Point(0.7505229824523099, -28.1222223203296),
-                new Point(-97.4374673769919, -3.2702509179958383),
-                new Point(-35.970438483683026, -97.51108153229755),
-                new Point(16.742769895269973, -81.01389565121943),
-                new Point(-80.72516658562994, -27.849134242573186),
-                new Point(84.43400945369831, 82.52322094538457),
-                new Point(95.08060575257628, 53.830644050586955),
-                new Point(-37.12153662596847, -78.07004569488683),
-                new Point(28.516039260191803, -26.019662444657072),
-                new Point(-48.102218842234976, 29.914239922222464),
-                new Point(-12.067227607698456, 64.7043722984759),
-                new Point(9.311545195169458, 44.73895870813095),
-                new Point(52.07940008206887, -54.1018306284855),
-                new Point(-56.02267180837765, 93.58740833101703),
-        };
-        Main.LCM = new int[][]
-                {
-                        {NOTUSED, OR, NOTUSED, NOTUSED, OR, OR, OR, NOTUSED, OR, OR, OR, AND, OR, NOTUSED, OR, },
-                        {OR, OR, AND, AND, NOTUSED, AND, OR, NOTUSED, OR, AND, NOTUSED, NOTUSED, OR, OR, AND, },
-                        {NOTUSED, AND, AND, NOTUSED, NOTUSED, AND, AND, OR, AND, OR, OR, NOTUSED, AND, NOTUSED, NOTUSED, },
-                        {NOTUSED, AND, NOTUSED, OR, NOTUSED, NOTUSED, AND, NOTUSED, OR, NOTUSED, OR, AND, AND, OR, NOTUSED, },
-                        {OR, NOTUSED, NOTUSED, NOTUSED, OR, AND, AND, NOTUSED, OR, NOTUSED, OR, NOTUSED, AND, NOTUSED, AND, },
-                        {OR, AND, AND, NOTUSED, AND, AND, AND, AND, OR, OR, OR, OR, AND, AND, OR, },
-                        {OR, OR, AND, AND, AND, AND, OR, AND, AND, NOTUSED, AND, AND, OR, OR, AND, },
-                        {NOTUSED, NOTUSED, OR, NOTUSED, NOTUSED, AND, AND, AND, AND, AND, AND, OR, AND, AND, AND, },
-                        {OR, OR, AND, OR, OR, OR, AND, AND, OR, OR, NOTUSED, NOTUSED, NOTUSED, NOTUSED, NOTUSED, },
-                        {OR, AND, OR, NOTUSED, NOTUSED, OR, NOTUSED, AND, OR, OR, NOTUSED, NOTUSED, AND, NOTUSED, AND, },
-                        {OR, NOTUSED, OR, OR, OR, OR, AND, AND, NOTUSED, NOTUSED, AND, OR, OR, OR, NOTUSED, },
-                        {AND, NOTUSED, NOTUSED, AND, NOTUSED, OR, AND, OR, NOTUSED, NOTUSED, OR, OR, NOTUSED, NOTUSED, OR, },
-                        {OR, OR, AND, AND, AND, AND, OR, AND, NOTUSED, AND, OR, NOTUSED, AND, NOTUSED, OR, },
-                        {NOTUSED, OR, NOTUSED, OR, NOTUSED, AND, OR, AND, NOTUSED, NOTUSED, OR, NOTUSED, NOTUSED, AND, NOTUSED, },
-                        {OR, AND, NOTUSED, NOTUSED, AND, OR, AND, AND, NOTUSED, AND, NOTUSED, OR, OR, NOTUSED, NOTUSED, },
-
-
-
-                };
-
-
-        assertTrue(Main.decide());
-
-
-
-    }
 
 }

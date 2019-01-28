@@ -26,6 +26,7 @@ class Calculator {
      * @param b
      * @param c
      * @return area of a triangle defined by the three points
+     * https://www.mathopenref.com/coordtrianglearea.html
      */
     static double computeArea(Point a, Point b, Point c) {
         return Math.abs((a.x * (b.y - c.y) + b.x * (c.y - a.y) + c.x * (a.y - b.y)) / 2);
@@ -54,10 +55,16 @@ class Calculator {
             return 0;
         }
 
-        // if k == 0 (cannot divide with 0)
+        // if k == 0 (cannot divide with 0) (it is an horizontal line)
         if(line.k == 0) {
-            return current.y - line.m;
+            return Math.abs(current.y - line.m);
         }
+
+        // if it is vertical line
+        if(line.isVerticalLine()){
+            return Math.abs(line.getHorizontalOffset() - current.x);
+        }
+
 
         // otherwise obtain orthogonal line and calculate distance
         double newK = -1/line.k;
