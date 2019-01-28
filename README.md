@@ -13,7 +13,7 @@ There are 15 LICs, and DECIDE() evaluates them all and assignes the 15 correspon
 The last step is to consider which LICs actually matter, which is done in the "Preliminary Unlocking Vector"(PUV). The elements in the PUV indicate how to combine elements in the PUM to form the "Final Unlocking Vector"(FUV). If all values of the FUV are true, it is allowed to fire an anti-ballistic missile.
 
 ## Documentation
-### Platform and dependencies
+### Platform and Dependencies
 This project uses *Java 8*.
 On Debian-based systems, you could use the following two command lines to install the *JRE* and the *JDK*.
 ```bash
@@ -25,8 +25,15 @@ Our dependencies are handled with *Maven*, see [pom.xml](pom.xml).
 
 We have one main dependency: [Junit 5](https://junit.org/junit5/) 
 
+### Test
+We have written unit tests for methods of:
+* [Calculator.java](src/main/java/main/Calculator.java) in [CalculatorTest.java](src/test/java/main/CalculatorTest.java)
+* [LIC.java](src/main/java/main/LIC.java) in [LICTest.java](src/test/java/main/LICTest.java)
 
-### How to run it ?
+and also end to end tests for the ``decide()`` of [Main.java](src/main/java/main/Main.java) 
+in [MainTest.java](src/test/java/main/MainTest.java) 
+
+### How to Run It
 #### Terminal
 On Debian-based systems, you could use the following  command line to install *Maven*.
 ```bash
@@ -44,14 +51,6 @@ You just have to import the project and select the file you want to run by right
 on it on the folder view on the left of the window.
 
 You can also use the built-in maven tool on the right of the window to run all tests.
-
-### Test
-We have written unit tests for methods of:
-* [Calculator.java](src/main/java/main/Calculator.java) in [CalculatorTest.java](src/test/java/main/CalculatorTest.java)
-* [LIC.java](src/main/java/main/LIC.java) in [LICTest.java](src/test/java/main/LICTest.java)
-
-and also end to end tests for the ``decide()`` of [Main.java](src/main/java/main/Main.java) 
-in [MainTest.java](src/test/java/main/MainTest.java) 
 
 ## Contributions
 
