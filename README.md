@@ -6,11 +6,11 @@ This tool decides whether or not to fire an anti-ballistic missile in a simulate
 
 
 ## Description
-The program takes input in the form of hypothetical radar data and generates a boolean signal that determines if a simulated anti-ballistic missle is to be fired. This is decided by the function DECIDE(), which takes all the radar data and determines which combinations of several possible "Launch Interceptor Conditions" (LIC) are relevant to the recieved radar data. 
+The program takes input in the form of hypothetical radar data and generates a boolean signal that determines if a simulated anti-ballistic missile is to be fired. This is decided by the function DECIDE(), which takes all the radar data and determines which combinations of several possible "Launch Interceptor Conditions" (LIC) are relevant to the recieved radar data. 
 
 There are 15 LICs, and DECIDE() evaluates them all and assignes the 15 corresponding boolean values to a "Conditions Met Vector" (CMV). The "Locigal Connector Matrix" (LCM) defines which LICs must be evaluated jointly. What conditions have been met (CMV) and how the conditions relate to each other (LCM), is combined and stored in the "Preliminary Unlocking Matrix" (PUM). 
 
-The last step is to consider which LIC's acctually matter, which is done in the "Preliminary Unlocking Vector"(PUV). The elements in the PUV indicate how to combine elements in the PUM to form the "Final Unlocking Vector"(FUV). If all values of the FUV are true, it is allowed to fire an anti-ballistic missle.
+The last step is to consider which LIC's acctually matter, which is done in the "Preliminary Unlocking Vector"(PUV). The elements in the PUV indicate how to combine elements in the PUM to form the "Final Unlocking Vector"(FUV). If all values of the FUV are true, it is allowed to fire an anti-ballistic missile.
 
 ## Documentation
 ### Platform and dependencies
@@ -46,6 +46,7 @@ We test every method in Calculator, LIC and Line with unittest. An E2E test has 
 	* LIC 13
 	* Line class
 	* areIdentical()
+	* distToLine()
 	* Code clean-up
 	
 * Viktor Widin
