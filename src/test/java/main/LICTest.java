@@ -39,9 +39,10 @@ class LICTest {
         Point a = new Point(1,1);
         Point b = new Point(0,0);
         Point c = new Point(2,0);
-        Point d = new Point(0.5,0.5);
-        Point e = new Point(-2,2);
+        Point d = new Point(4.5,4.5);
+        Point e = new Point(-4,4);
         Point f = new Point(0.75,0.75);
+        Point g = new Point(0.5,0.5);
 
         // there is only one points when we need three
         assertEquals(LIC.LIC_1(new Point[]{a},1),false);
@@ -55,15 +56,15 @@ class LICTest {
         assertEquals(LIC.LIC_1(points_2,3),true);
 
         /* all points are on the same line and the distance between
-           a and b is larger than 1.1
+           a and b is larger than 2*1.1
          */
         Point[] points_3 = {a,b,d};
         assertEquals(LIC.LIC_1(points_3,3),true);
 
         /* all points are on the same line and the distance between
-          them is smaller than 1.1
+          them is smaller than 2*1.1
          */
-        Point[] points_4 = {a,d,f};
+        Point[] points_4 = {a,f,g};
         assertEquals(LIC.LIC_1(points_4,3),false);
 
         // input is invalid
@@ -229,18 +230,20 @@ class LICTest {
         LIC.A_PTS = 2;
         LIC.B_PTS = 2;
         Point[] points = {
-                new Point(3, 3),
+                new Point(0, 10.5),
                 new Point(6, 3),
                 new Point(6, 6),
-                new Point(9, 3),
+                new Point(-10.5, 0),
                 new Point(9, 4),
                 new Point(13, 1),
-                new Point(13, 4)};
+                new Point(0, -10.5)};
 
         // should pass because there is a set which cannot be contained within RADIUS1
+        // first, fourth and sixth point are on a trigonometric circle of rardius 10.5
         assertTrue(LIC.LIC_8(points, points.length));
 
         // should fail because there are no sets which cannot be contained within RADIUS1
+        // first, fourth and sixth point are on a trigonometric circle of rardius 10.5
         LIC.RADIUS1 = 11;
         assertFalse(LIC.LIC_8(points, points.length));
     }
@@ -373,17 +376,19 @@ class LICTest {
         LIC.A_PTS = 2;
         LIC.B_PTS = 2;
         Point[] points = {
-                new Point(3, 3),
+                new Point(0, 10.5),
                 new Point(6, 3),
                 new Point(6, 6),
-                new Point(9, 3),
+                new Point(-10.5, 0),
                 new Point(9, 4),
                 new Point(13, 1),
-                new Point(13, 4)};
-        // should pass because there is at least one set which cannot be contained
+                new Point(0, -10.5)};
+
+        // should pass because the following set has a radius > 10 and < 11
+        // first, fourth and sixth point are on a trigonometric circle of rardius 10.5
         assertTrue(LIC.LIC_13(points, points.length));
 
-        // should fail because RADIUS2 is smaller than RADIUS1
+        // should fail because the set with the first, fourth and sixth point is larger than RADIUS2
         LIC.RADIUS2 = 9;
         assertFalse(LIC.LIC_13(points, points.length));
     }
