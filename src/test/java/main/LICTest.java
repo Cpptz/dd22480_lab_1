@@ -170,8 +170,10 @@ class LICTest {
 
         Point[] points = {a,b,c,d,e,f};
 
+        // No consecutive points where x[j] - x[i] < 0
         assertFalse(LIC.LIC_5(points,3));
 
+        // Point e - point d would be -2 and thus < 0
         assertTrue(LIC.LIC_5(points,6));
     }
 
@@ -320,8 +322,10 @@ class LICTest {
 
         Point[] points = {a,b,c,d,e,f};
 
+        // No consecutive points where x[j] - x[i] < 0 where j is i + G_PTS + 1
         assertFalse(LIC.LIC_11(points,3));
 
+        // Point c - point f would be -3 and thus < 0
         assertTrue(LIC.LIC_11(points,6));
 
         // this should fail since G_PTS are less than 1
