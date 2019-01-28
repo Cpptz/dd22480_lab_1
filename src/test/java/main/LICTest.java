@@ -14,18 +14,18 @@ class LICTest {
         Point b = new Point(0,3);
         Point c = new Point(0,0);
 
-        // Only one point when we actually need two
+        // Only one point when we actually need two, so it should return false
         assertEquals(LIC.LIC_0(new Point[]{a},1),false);
 
 
-        // distance between a and b is larger than 1
+        // distance between a and b is larger than 1 so it should return true
         Point[] points = {a,b,c};
         assertEquals(LIC.LIC_0(points,3),true);
 
-        // they are the same point so there is no distance between them
+        // they are the same point so there is no distance between them, it should return false
         assertEquals(LIC.LIC_0(new Point[]{a,c} ,2),false);
 
-        // wrong input
+        // wrong input, LENGTH1 should be >= 0 so it should return false
         LIC.LENGTH1 = -1;
         assertEquals(LIC.LIC_0(points,3),false);
 
@@ -43,14 +43,14 @@ class LICTest {
         Point e = new Point(-2,2);
         Point f = new Point(0.75,0.75);
 
-        // there is only one points when we need three
+        // there is only one points when we need three, so it should return false
         assertEquals(LIC.LIC_1(new Point[]{a},1),false);
 
-        // circle cented on (1,0) of radius 1 so less than 1.1
+        // circle cented on (1,0) of radius 1 so less than 1.1, so it should return false
         Point[] points = {a,b,c};
         assertEquals(LIC.LIC_1(points,3),false);
 
-        // distance between d and e is larger than  1.1
+        // distance between d and e is larger than  2*1.1 so it should return false
         Point[] points_2 = {a,d,e};
         assertEquals(LIC.LIC_1(points_2,3),true);
 
@@ -81,19 +81,22 @@ class LICTest {
         Point c = new Point(2,0);
         Point[] points = {a, b, c};
 
-        // if EPSILON z 0
+        // if EPSILON < 0, it should return false because EPSILON should be >= 0
         assertFalse(LIC.LIC_2(points, 3));
-        //If EPSILON > PI
+
+        // if EPSILON > PI, it should return false because EPSILON should be < PI
         LIC.EPSILON = 4;
         assertFalse(LIC.LIC_2(points, 3));
 
-        //if numPoints < 3
+        // if numPoints < 3, we don't have enough point to compute an angle so it should return false
         assertFalse(LIC.LIC_2(points, 2));
 
+        // abc form an angle which is less than pi so less than < pi + 0, so it should return true
         LIC.EPSILON = 0;
         assertTrue(LIC.LIC_2(points, 3));
 
-        //try with three points where the first or last is the same as the vertex
+        // try with three points where the last is the same as the vertex, then the angle is undefined and
+        // LIC can not be satisfied so it should return false
         Point d = new Point(0,0);
         Point e = new Point(1,2);
         Point f = new Point(1,2);
@@ -111,15 +114,17 @@ class LICTest {
 
         Point[] points = {a,b,c};
 
+        // triangle (a,b,c) has an area of 2 which is less than 20, so it should return false
         assertEquals(LIC.LIC_3(points,3),false);
 
         Point d = new Point(6,0);
-        Point e = new Point(70,0);
-        Point f = new Point(0,24);
-        Point g = new Point(4,21);
+        Point e = new Point(20,0);
+        Point f = new Point(0,20);
+        Point g = new Point(0,0);
 
         Point[] newpoints = {a,b,c,d,e,f,g};
 
+        // Area of triangle e,f,g is 200 which is bigger than
         assertEquals(LIC.LIC_3(newpoints,7),true);
 
         LIC.AREA1 = -1;
