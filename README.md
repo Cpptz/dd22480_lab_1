@@ -53,3 +53,10 @@ We test every method in Calculator, LIC and Line with unittest. An E2E test has 
 	* calcQuadrant
 	* Readme
 	* Documentation for Calculator method
+
+* Robin Gunning
+    * LIC 3
+    * LIC 5
+    * LIC 7
+    * LIC 11
+    * calculateArea
