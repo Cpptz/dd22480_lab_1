@@ -78,33 +78,38 @@ class CalculatorTest {
         Point b = new Point(2, 4);
         Point c = new Point(4, 8);
 
+        // all points are on the same line. It should return distance between a and c divided by 2
         assertEquals(Calculator.computeRadiusTriInCircleFromPoints(a,b,c), Math.sqrt(45)/2,DELTA);
 
         a = new Point(0, 2);
         b = new Point(-2, 0);
         c = new Point(2, 0);
+        // all points are on the circle of radius 2 centered on (0,0) so it should return 0
         assertEquals(Calculator.computeRadiusTriInCircleFromPoints(a,b,c), 2.0, DELTA);
 
         a = new Point(-5, 0);
         b = new Point(0, 0.75);
         c = new Point(5, 0);
 
+        // triangle with an obtus angle. It should return distance between a and c divided by 2
         assertEquals(Calculator.computeRadiusTriInCircleFromPoints(a,b,c), 5.0, DELTA);
     }
 
     @Test
     void computeAngle(){
-        Point a = new Point(Math.cos(Math.PI/6), Math.sin(Math.PI/6));
+        Point a = new Point(Math.cos(Math.PI/6.0), Math.sin(Math.PI/6.0));
         Point b = new Point(0, 0);
-        Point c = new Point(-1, -1);
-        assertEquals(Calculator.computeAngle(a,b,c),165.0/180.0*Math.PI,DELTA);
-        assertEquals(Calculator.computeAngle(c,b,a),165.0/180.0*Math.PI,DELTA);
+        Point c = new Point(Math.cos(-3*Math.PI/4.0), Math.sin(-3*Math.PI/4.0));
+        // angle should be equal to 11pi/12 and be same regardless of the order of the first and third point
+        assertEquals(Calculator.computeAngle(a,b,c),11.0/12.0*Math.PI,DELTA);
+        assertEquals(Calculator.computeAngle(c,b,a),11.0/12.0*Math.PI,DELTA);
 
-        a = new Point(-1, 1);
+        a = new Point(Math.cos(3*Math.PI/4.0), Math.sin(3*Math.PI/4.0));
         b = new Point(0, 0);
-        c = new Point(-1, -1);
-        assertEquals(Calculator.computeAngle(a,b,c),90.0/180.0*Math.PI,DELTA);
-        assertEquals(Calculator.computeAngle(c,b,a),90.0/180.0*Math.PI,DELTA);
+        c = new Point(Math.cos(-3*Math.PI/4.0), Math.sin(-3*Math.PI/4.0));
+        // angle should be equal to pi/2 and be same regardless of the order of the first and third point
+        assertEquals(Calculator.computeAngle(a,b,c),Math.PI/2.0,DELTA);
+        assertEquals(Calculator.computeAngle(c,b,a),Math.PI/2.0,DELTA);
 
     }
 
