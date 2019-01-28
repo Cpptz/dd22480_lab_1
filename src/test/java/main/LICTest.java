@@ -129,6 +129,7 @@ class LICTest {
 
         // AREA should be >= 0 so it should return false
         LIC.AREA1 = -1;
+
         assertEquals(LIC.LIC_3(newpoints,7),false);
     }
 
@@ -171,10 +172,10 @@ class LICTest {
 
         Point[] points = {a,b,c,d,e,f};
 
-        // for points a,b,c all x values are in increasing so it should return false
+        // No consecutive points where x[j] - x[i] < 0
         assertFalse(LIC.LIC_5(points,3));
 
-        // e.x  < d.x so it should return true
+        // Point e - point d would be -2 and thus < 0
         assertTrue(LIC.LIC_5(points,6));
     }
 
@@ -198,6 +199,7 @@ class LICTest {
 
         // first and last point are the same so we have a coincident point
         // distance between third point and this coincident is larger than 10
+        // so it should return true
         Point[] points_1 = {
                 new Point(0, 0),
                 new Point(10, 0),
@@ -205,11 +207,8 @@ class LICTest {
                 new Point(0, 0)};
         assertTrue(LIC.LIC_6(points_1,4));
 
-
-
-
-
     }
+
 
     @Test
     void LIC_7() {
@@ -337,8 +336,10 @@ class LICTest {
 
         Point[] points = {a,b,c,d,e,f};
 
+        // No consecutive points where x[j] - x[i] < 0 where j is i + G_PTS + 1
         assertFalse(LIC.LIC_11(points,3));
 
+        // Point c - point f would be -3 and thus < 0
         assertTrue(LIC.LIC_11(points,6));
 
         // this should fail since G_PTS are less than 1
